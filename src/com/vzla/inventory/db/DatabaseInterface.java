@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vzal.inventory.products.dao;
+package com.vzla.inventory.db;
 
 /**
  *
  * @author luisr
  */
-public interface ProductDAO {
+public interface DatabaseInterface {
 
 }
