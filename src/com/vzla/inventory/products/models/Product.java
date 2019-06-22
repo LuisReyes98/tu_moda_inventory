@@ -20,7 +20,7 @@ public class Product {
     public final static String NAME_FIELD_NAME = "name";
     public final static String STOCK_FIELD_NAME = "stock";
 
-    @DatabaseField(id = true, generatedId = true, columnName = ID_FIELD_NAME)
+    @DatabaseField(generatedId = true, columnName = ID_FIELD_NAME)
     private int id;
 
     @DatabaseField(canBeNull = false, columnName = CATEGORY_FIELD_NAME)
@@ -36,8 +36,7 @@ public class Product {
 
     }
 
-    public Product(int id, String category, String name, int stock) {
-        this.id = id;
+    public Product(String category, String name, int stock) {
         this.category = category;
         this.name = name;
         this.stock = stock;

@@ -5,6 +5,9 @@
  */
 package com.vzla.inventory.main;
 
+import com.vzla.inventory.db.DatabaseDAO;
+import com.vzla.inventory.products.models.Product;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +21,8 @@ import javafx.stage.Stage;
  * @author luisr
  */
 public class Main extends Application {
+
+    public static DatabaseDAO db = new DatabaseDAO();
 
     @Override
     public void start(Stage primaryStage) {
@@ -36,6 +41,8 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 300, 250);
 
+        ormTest();
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -46,6 +53,23 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+    }
+
+    private void ormTest() {
+        Product pro = new Product("Camisa", "negra", 12);
+        Product pro2 = null;
+        db.startConnections();
+        try {
+            db.productDao.create(pro);
+
+            pro2 = db.productDao.queryForId(pro.getId());
+
+            System.out.println(pro2.getCategory() + " " + pro2.getName() + " " + pro2.getStock());
+        } catch (SQLException e) {
+            System.out.println("Error Main" + e.getMessage());
+        }
+
     }
 
 }

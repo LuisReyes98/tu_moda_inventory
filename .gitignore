@@ -36,5 +36,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-
 # End of https://www.gitignore.io/api/java,netbeans
+
+### Project Especific ignores ###
+inventory.sqlite3
