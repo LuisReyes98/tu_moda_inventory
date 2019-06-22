@@ -40,3 +40,4 @@ nbdist/
 
 ### Project Especific ignores ###
 inventory.sqlite3
+src/com/vzla/inventory/assets/stylesheets/.sass-cache/

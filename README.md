@@ -1,8 +1,16 @@
 # Control de Inventario Venezuela tu moda
 
-#### Database:
+## Database
+
 SQLite
 
-#### libraries used:
+## libraries used
+
 - [ORMLite JDBC 5.1 API](http://ormlite.com/) , both core and jdbc
 - [SQLite JSBC](https://bitbucket.org/xerial/sqlite-jdbc)
+
+## Todo
+
+- Añadir lista que guarda los controladores para acceder mas facilmente a ellos y no crear una nueva instancia cada vez que se va a navegar a una vista
+- modelo de ventas para permanencia en base de datos
+- vistas
