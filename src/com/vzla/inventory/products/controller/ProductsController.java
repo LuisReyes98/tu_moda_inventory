@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ProductsController extends MainController {
 
     public Product product;
-    public List<Product> products;
+    public Object products[];
 
     public void viewProductsCreate() {
         product = new Product();
@@ -25,12 +25,25 @@ public class ProductsController extends MainController {
 
     public void viewProducts() {
         try {
-            products = Main.db.productDao.queryForAll();
+            products = Main.db.productDao.queryForAll().toArray();
         } catch (SQLException ex) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Products index error: " + ex.getMessage());
         }
+
         NavigationController.goToView("products_index");
+
+    }
+
+    public void saveNewProduct(String category, String name, String stock, String cost) {
+        product = new Product(category, name, Integer.parseInt(stock), Float.parseFloat(cost));
+        try {
+            Main.db.productDao.create(product);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error ProductsController saveNewProduct " + ex.getMessage());
+        }
+        this.viewProducts();
 
     }
 

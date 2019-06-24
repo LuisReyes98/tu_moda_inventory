@@ -4,6 +4,7 @@ function load() {
     app = new Vue({
         el: '#app',
         data: {
+            products: JAVA_CONTROLLER.products,
         }
     })
 }

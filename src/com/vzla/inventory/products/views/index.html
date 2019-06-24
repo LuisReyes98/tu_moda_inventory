@@ -13,6 +13,16 @@
 
         <button onclick="goToIndex()">Volver a inicio</button>
         <button class="btn btn-success" onclick="viewProductCreate()">Crear Producto</button>
+        
+
+        <div v-for="product in products">
+            <div class="border border-secondary">
+                <h3>{{product.getCategory()}}</h3>
+                <h4>{{product.getName()}}</h4>
+                <h5>Stock: {{product.getStock()}}</h5>
+                <h5>Cost: {{product.getCost()}}</h5>
+            </div>
+        </div>
     </div>
 </body>
 

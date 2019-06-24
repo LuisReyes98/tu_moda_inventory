@@ -13,10 +13,11 @@ function load() {
 }
 
 function saveProduct(){
-    JAVA_CONTROLLER.sout(`La categoria es ${app.category}`);
-    JAVA_CONTROLLER.sout(`El nombre es ${app.name}` );
-    JAVA_CONTROLLER.sout(`El stock es ${app.stock}` );
-    JAVA_CONTROLLER.sout(`El cost es ${app.cost}`);
+    JAVA_CONTROLLER.saveNewProduct(app.category, app.name, app.stock, app.cost);
+    // JAVA_CONTROLLER.sout(`La categoria es ${app.category}`);
+    // JAVA_CONTROLLER.sout(`El nombre es ${app.name}` );
+    // JAVA_CONTROLLER.sout(`El stock es ${app.stock}` );
+    // JAVA_CONTROLLER.sout(`El cost es ${app.cost}`);
 }
 function goBack(){
     JAVA_CONTROLLER.viewProducts();

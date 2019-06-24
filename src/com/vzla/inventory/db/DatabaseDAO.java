@@ -33,23 +33,25 @@ public class DatabaseDAO {
     }
 
     public void startConnections() {
-        try {
-            connectionSource = new JdbcConnectionSource(DATABASE_URL);
 
+        try {
+            //connect to the database
+            connectionSource = new JdbcConnectionSource(DATABASE_URL);
         } catch (SQLException e) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Error DatabaseDAO connection" + e.getMessage());
         }
-        try {
-            // if you need to create the table
-            TableUtils.createTable(connectionSource, Product.class);
 
+        try {
+            //create the database tables
+            TableUtils.createTableIfNotExists(connectionSource, Product.class);
         } catch (SQLException e) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Error DatabaseDAO Tables" + e.getMessage());
         }
+
         try {
-            //create DAO
+            //create the DAOs
             productDao = DaoManager.createDao(connectionSource, Product.class);
 
         } catch (SQLException e) {
