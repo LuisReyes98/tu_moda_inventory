@@ -12,6 +12,6 @@ function goToIndex() {
     JAVA_CONTROLLER.goToIndex();
 }
 
-function goToProductCreate(){
-    JAVA_CONTROLLER.goToProductCreate();
+function viewProductCreate(){
+    JAVA_CONTROLLER.viewProductsCreate();
 }

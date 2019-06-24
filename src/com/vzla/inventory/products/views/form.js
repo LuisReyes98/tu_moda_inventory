@@ -19,5 +19,5 @@ function saveProduct(){
     JAVA_CONTROLLER.sout(`El cost es ${app.cost}`);
 }
 function goBack(){
-    JAVA_CONTROLLER.goToProducts();
+    JAVA_CONTROLLER.viewProducts();
 }

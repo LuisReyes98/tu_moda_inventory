@@ -5,6 +5,8 @@
  */
 package com.vzla.inventory.controller;
 
+import com.vzla.inventory.main.Main;
+
 /**
  *
  * @author luisr
@@ -14,12 +16,22 @@ public class MainController {
     public MainController() {
     }
 
-    public void goToIndex() {
-        NavigationController.goToView("index");
-    }
-
     public void sout(String s) {
         System.out.println(s);
+    }
+
+    public void goToIndex() {
+        Main.navController.indexController.viewIndex();
+    }
+
+    public void goToProducts() {
+        Main.navController.productsController.viewProducts();
+
+    }
+
+    public void goToSales() {
+        Main.navController.salesController.viewSales();
+
     }
 
 }

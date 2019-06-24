@@ -7,6 +7,7 @@ package com.vzla.inventory.home.controller;
 
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
+import com.vzla.inventory.main.Main;
 
 /**
  *
@@ -18,13 +19,8 @@ public class IndexController extends MainController {
         super();
     }
 
-    public void goToProducts() {
-        NavigationController.goToView("products_index");
-
-    }
-
-    public void goToSales() {
-        NavigationController.goToView("sales_index");
+    public void viewIndex() {
+        NavigationController.goToView("index");
     }
 
 }

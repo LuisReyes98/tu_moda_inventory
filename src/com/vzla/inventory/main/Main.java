@@ -37,6 +37,8 @@ public class Main extends Application {
         primaryStage.setTitle("Control de Inventario");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        db.startConnections();
     }
 
     /**
