@@ -19,6 +19,7 @@ public class Product {
     public final static String CATEGORY_FIELD_NAME = "category";
     public final static String NAME_FIELD_NAME = "name";
     public final static String STOCK_FIELD_NAME = "stock";
+    public final static String COST_FIELD_NAME = "cost";
 
     @DatabaseField(generatedId = true, columnName = ID_FIELD_NAME)
     private int id;
@@ -32,14 +33,18 @@ public class Product {
     @DatabaseField(canBeNull = false, columnName = STOCK_FIELD_NAME)
     private int stock;
 
+    @DatabaseField(canBeNull = false, columnName = COST_FIELD_NAME)
+    private float cost;
+
     public Product() {
 
     }
 
-    public Product(String category, String name, int stock) {
+    public Product(String category, String name, int stock, float cost) {
         this.category = category;
         this.name = name;
         this.stock = stock;
+        this.cost = cost;
     }
 
     public int getId() {
@@ -72,6 +77,14 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 
 }

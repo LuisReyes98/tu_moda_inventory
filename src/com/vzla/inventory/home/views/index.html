@@ -9,14 +9,16 @@
 </head>
 <body>
     <div id="app">
-        <h2>Productos</h2>
+        <h1 class="h1"> Control de inventario</h1>
+        <nav>
+            <button class="btn btn-primary" onclick="goToProducts()">Productos</button>
+            <button class="btn btn-primary" onclick="goToSales()">Registrar Venta</button>
+        </nav>
+        <img class="img-fluid" src="../../assets/images/background.png" alt="logo">
 
-        <button onclick="goToIndex()">Volver a inicio</button>
-        <button class="btn btn-success" onclick="goToProductCreate()">Crear Producto</button>
     </div>
-</body>
 
+</body>
 <script src="../../assets/javascript/vue.js"></script>
 <script src="index.js"></script>
-
 </html>

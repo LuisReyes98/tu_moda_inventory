@@ -1,8 +1,5 @@
 @import 'bootstrap';
 
-#landing{
-    background-image: url("../assets/images/background.png");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
+#app{
+    @extend .p-4 ;
 }

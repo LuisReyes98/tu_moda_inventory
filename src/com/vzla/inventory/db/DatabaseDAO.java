@@ -38,6 +38,7 @@ public class DatabaseDAO {
 
             //create DAO
             productDao = DaoManager.createDao(connectionSource, Product.class);
+
         } catch (SQLException e) {
             System.out.println("Error DatabaseDAO" + e.getMessage());
         }

@@ -15,7 +15,11 @@ public class MainController {
     }
 
     public void goToIndex() {
-        NavigationController.goToView("index", new IndexController());
+        NavigationController.goToView("index");
+    }
+
+    public void sout(String s) {
+        System.out.println(s);
     }
 
 }

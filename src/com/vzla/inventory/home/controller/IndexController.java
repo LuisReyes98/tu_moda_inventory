@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vzla.inventory.controller;
+package com.vzla.inventory.home.controller;
 
+import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
-import com.vzla.inventory.products.controller.ProductsController;
-import com.vzla.inventory.sales.controller.SalesController;
 
 /**
  *
@@ -20,13 +19,12 @@ public class IndexController extends MainController {
     }
 
     public void goToProducts() {
-        System.out.println("Producto");
-        NavigationController.goToView("products_index", new ProductsController());
+        NavigationController.goToView("products_index");
 
     }
 
     public void goToSales() {
-        System.out.println("Sales");
-        NavigationController.goToView("sales_index", new SalesController());
+        NavigationController.goToView("sales_index");
     }
+
 }

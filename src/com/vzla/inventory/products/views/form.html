@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+
+</head>
+<body>
+    <div id="app">
+        <form action="">
+            <label for="category">Categoria </label>
+            <input v-model="category" id=" category" type="text">
+
+            <label for="name">Nombre </label>
+            <input v-model="name" id="name" type="text">
+
+            <label for="stock">Inventario </label>
+            <input v-model="stock" id="stock" type="number">
+
+            <label for="cost">Costo </label>
+            <input v-model="cost" id="cost" type="number">
+
+            <button onclick="saveProduct()"> Crear Producto </button>
+            <button onclick="goBack()">Volver </button>
+
+            <p>la categoria se llama <strong>{{category}}</strong></p>
+        </form>
+
+    </div>
+</body>
+<script src="../../assets/javascript/vue.js"></script>
+<script src="form.js"></script>
+
+</html>
