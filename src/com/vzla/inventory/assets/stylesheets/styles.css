@@ -6556,7 +6556,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 .pl-3, .px-3 {
   padding-left: 1rem !important; }
 
-.p-4, #app {
+.p-4, #tu_moda_app {
   padding: 1.5rem !important; }
 
 .pt-4, .py-4 {
@@ -19607,5 +19607,10 @@ a.text-dark:focus, a.text-dark:hover {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
+#tu_moda_app .pointer {
+  cursor: pointer; }
+#tu_moda_app .table_action_icon {
+  cursor: pointer;
+  font-size: 24px; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -49,6 +49,7 @@ public class NavigationController implements NavigationInterface {
 
         controllerHash.put("products_index", productsController);
         controllerHash.put("products_create", productsController);
+        controllerHash.put("products_edit", productsController);
 
         controllerHash.put("sales_index", salesController);
 
@@ -60,7 +61,8 @@ public class NavigationController implements NavigationInterface {
     private void loadUrlHash() {
         urlHash.put("index", INDEX_URL);
         urlHash.put("products_index", PRODUCTS_INDEX_URL);
-        urlHash.put("products_create", PRODUCTS_CREATE_URL);
+        urlHash.put("products_create", PRODUCTS_FORM_URL);
+        urlHash.put("products_edit", PRODUCTS_FORM_URL);
 
         urlHash.put("sales_index", SALES_INDEX_URL);
 

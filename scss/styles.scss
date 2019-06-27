@@ -1,7 +1,9 @@
 
 @import 'bootstrap/bootstrap.min.scss';
 @import 'materialdesignicons/materialdesignicons';
+@import 'vzlatumoda/custom';
 
-#app{
+#tu_moda_app {
     @extend .p-4;
+    
 }

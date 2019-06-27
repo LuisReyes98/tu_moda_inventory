@@ -19,7 +19,7 @@ public class IndexController extends MainController {
     }
 
     public void viewIndex() {
-        NavigationController.goToView("index", false, false);
+        NavigationController.goToView("index", true, false);
     }
 
 }

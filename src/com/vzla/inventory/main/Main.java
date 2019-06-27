@@ -28,7 +28,7 @@ public class Main extends Application {
 
     public void start(Stage primaryStage) {
 
-        navController.goToView("index", root, false, false);
+        navController.indexController.viewIndex();
 
         scene = new Scene(root);
 

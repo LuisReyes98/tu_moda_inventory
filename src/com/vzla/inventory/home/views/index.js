@@ -1,16 +1,17 @@
-function load() {
+function preload() {
     var app = new Vue({
-        el: '#app',
-        data: {
-            message: JAVA_CONTROLLER.dummy,
-        }
+        el: '#tu_moda_app',
+        methods: {
+            goToProducts: function () {
+                JAVA_CONTROLLER.goToProducts();
+            },
+            goToSales: function () {
+                JAVA_CONTROLLER.goToSales();
+            }
+        },
+
     })
 }
 
-function goToProducts() {
-    JAVA_CONTROLLER.goToProducts();
-}
 
-function goToSales() {
-    JAVA_CONTROLLER.goToSales();
-}
+
