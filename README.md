@@ -1,5 +1,13 @@
 # Control de Inventario Venezuela tu moda
 
+## Development
+
+### sass command
+
+```cmd
+sass --watch styles.scss:..\src\com\vzla\inventory\assets\stylesheets\styles.css
+```
+
 ## Database
 
 SQLite

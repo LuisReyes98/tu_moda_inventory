@@ -27,10 +27,8 @@ public class Main extends Application {
     @Override
 
     public void start(Stage primaryStage) {
-//        WebView browser = navController.loadView("index", controller);
-//
-//        root.getChildren().add(browser);//adding the view
-        navController.goToView("index", root);
+
+        navController.goToView("index", root, false, false);
 
         scene = new Scene(root);
 

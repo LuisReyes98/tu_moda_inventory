@@ -20,7 +20,7 @@ public class ProductsController extends MainController {
 
     public void viewProductsCreate() {
         product = new Product();
-        NavigationController.goToView("products_create");
+        NavigationController.goToView("products_create", true, true);
     }
 
     public void viewProducts() {
@@ -31,7 +31,7 @@ public class ProductsController extends MainController {
             System.out.println("Products index error: " + ex.getMessage());
         }
 
-        NavigationController.goToView("products_index");
+        NavigationController.goToView("products_index", true, true);
 
     }
 

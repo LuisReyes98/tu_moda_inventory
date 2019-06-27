@@ -29,11 +29,17 @@ public class NavigationController implements NavigationInterface {
     public ProductsController productsController;
     public SalesController salesController;
 
+    private WebView browser;
+    private WebEngine webEngine;
+
     public NavigationController() {
         loadUrlHash();
         loadControllers();
     }
 
+    /**
+     * Hash of the controllers to be able to call them by name
+     */
     private void loadControllers() {
         indexController = new IndexController();
         productsController = new ProductsController();
@@ -48,6 +54,9 @@ public class NavigationController implements NavigationInterface {
 
     }
 
+    /**
+     * Hash of the views files to be able to call them by name
+     */
     private void loadUrlHash() {
         urlHash.put("index", INDEX_URL);
         urlHash.put("products_index", PRODUCTS_INDEX_URL);
@@ -57,9 +66,18 @@ public class NavigationController implements NavigationInterface {
 
     }
 
-    public WebView loadView(String urlName) {
-        WebView browser = new WebView();
-        WebEngine webEngine = browser.getEngine();
+    /**
+     * Setting controller and view to load. "willPreload" to load vue,
+     * "willLoad" to load vue data
+     *
+     * @param urlName
+     * @param willPreload
+     * @param willLoad
+     * @return JavaFX Node WebView containing the webpage to load
+     */
+    public WebView loadView(String urlName, boolean willPreload, boolean willLoad) {
+        browser = new WebView();
+        webEngine = browser.getEngine();
 
         String url = this.getClass().getResource(urlHash.get(urlName)).toExternalForm();
 
@@ -67,29 +85,59 @@ public class NavigationController implements NavigationInterface {
                 .stateProperty()
                 .addListener((obs, old, neww)
                         -> {
-                    if (neww == Worker.State.SUCCEEDED) {
+                    if (neww == Worker.State.SUCCEEDED) {//once the page has loaded
                         // Let JavaScript make calls to adder object,
                         // this will execute once the file is loaded
                         JSObject bridge = (JSObject) webEngine.executeScript("window");
                         bridge.setMember("JAVA_CONTROLLER", controllerHash.get(urlName));
-                        webEngine.executeScript("load()");
+                        // overriding javascript console.log with JAVA_CONTROLLER.log()
+                        webEngine.executeScript("console.log = function(message)\n"
+                                + "{\n"
+                                + "    JAVA_CONTROLLER.log(message);\n"
+                                + "};");
+                        if (willPreload) {
+                            webEngine.executeScript("preload()");
+
+                        }
+                        if (willLoad) {
+                            webEngine.executeScript("load()");
+
+                        }
+
                     }
                 });
 
         webEngine.load(url);
-        return browser;
+        return browser; //view to show
     }
 
-    public void goToView(String urlName, StackPane root) {
-        WebView browser = this.loadView(urlName);
+    /**
+     * urlName to use a register name of the view. "willPreload" to load vue,
+     * "willLoad" to load vue data
+     *
+     * @param urlName
+     * @param root
+     * @param willPreload
+     * @param willLoad
+     */
+    public void goToView(String urlName, StackPane root, boolean willPreload, boolean willLoad) {
+        browser = this.loadView(urlName, willPreload, willLoad);
 
         root.getChildren().clear();
         root.getChildren().add(browser);//adding the view
     }
 
-    public static void goToView(String urlName) {
+    /**
+     * urlName to use a register name of the view ."willPreload" to load vue,
+     * "willLoad" to load vue data
+     *
+     * @param urlName
+     * @param willPreload
+     * @param willLoad
+     */
+    public static void goToView(String urlName, boolean willPreload, boolean willLoad) {
 
-        Main.navController.goToView(urlName, Main.root);
+        Main.navController.goToView(urlName, Main.root, willPreload, willLoad);
 
     }
 }

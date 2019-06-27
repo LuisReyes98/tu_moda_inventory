@@ -41,3 +41,6 @@ nbdist/
 ### Project Especific ignores ###
 inventory.sqlite3
 src/com/vzla/inventory/assets/stylesheets/.sass-cache/
+scss/.sass-cache/
+bootstrap-4.3.1.zip
+MaterialDesign-Webfont-master.zip

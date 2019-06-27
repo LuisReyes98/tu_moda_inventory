@@ -7,7 +7,6 @@ package com.vzla.inventory.home.controller;
 
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
-import com.vzla.inventory.main.Main;
 
 /**
  *
@@ -20,7 +19,7 @@ public class IndexController extends MainController {
     }
 
     public void viewIndex() {
-        NavigationController.goToView("index");
+        NavigationController.goToView("index", false, false);
     }
 
 }

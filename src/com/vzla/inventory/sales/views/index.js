@@ -1,3 +1,7 @@
+function preload() {
+
+}
+
 function load() {
 
 }

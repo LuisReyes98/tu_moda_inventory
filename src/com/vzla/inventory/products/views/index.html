@@ -12,15 +12,59 @@
         <h2>Productos</h2>
 
         <button onclick="goToIndex()">Volver a inicio</button>
-        <button class="btn btn-success" onclick="viewProductCreate()">Crear Producto</button>
-        
+        <button class="btn btn-success" onclick="viewProductCreate()">
+            Crear Producto
+        </button>
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Categoria </th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Inventario </th>
+                    <th scope="col">Costo </th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="product in products" v-bind:key="product.getId()">
+                    <td>{{product.getId()}}</td>
+                    <td>{{product.getCategory()}}</td>
+                    <td>{{product.getName()}}</td>
+                    <td>{{product.getStock()}}</td>
+                    <td>{{product.getCost()}}</td>
+                    <td>
+                        <i class="mdi mdi-trash-can"></i>
+                    </td>
 
-        <div v-for="product in products">
-            <div class="border border-secondary">
-                <h3>{{product.getCategory()}}</h3>
-                <h4>{{product.getName()}}</h4>
-                <h5>Stock: {{product.getStock()}}</h5>
-                <h5>Cost: {{product.getCost()}}</h5>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
@@ -28,5 +72,9 @@
 
 <script src="../../assets/javascript/vue.js"></script>
 <script src="index.js"></script>
+
+<script src="../../assets/javascript/jquery.js" ></script>
+<script src="../../assets/javascript/popper.js"  ></script>
+<script src="../../assets/javascript/bootstrap.min.js" ></script>
 
 </html>

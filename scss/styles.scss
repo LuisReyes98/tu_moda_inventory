@@ -1,0 +1,7 @@
+
+@import 'bootstrap/bootstrap.min.scss';
+@import 'materialdesignicons/materialdesignicons';
+
+#app{
+    @extend .p-4;
+}

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vzla.inventory.controller;
 
 import com.vzla.inventory.main.Main;
 
 /**
+ * Parent class of all view
  *
  * @author luisr
  */
@@ -16,19 +12,28 @@ public class MainController {
     public MainController() {
     }
 
-    public void sout(String s) {
+    public void log(String s) {
         System.out.println(s);
     }
 
+    /**
+     * Go to method to travel from current view to
+     */
     public void goToIndex() {
         Main.navController.indexController.viewIndex();
     }
 
+    /**
+     * Go to method to travel from current view to
+     */
     public void goToProducts() {
         Main.navController.productsController.viewProducts();
 
     }
 
+    /**
+     * Go to method to travel from current view to
+     */
     public void goToSales() {
         Main.navController.salesController.viewSales();
 

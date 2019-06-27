@@ -1,5 +1,5 @@
-// products script
 let app;
+
 function preload() {
     app = new Vue({
         el: '#app',
@@ -11,12 +11,4 @@ function preload() {
 
 function load() {
     app.products = JAVA_CONTROLLER.products;
-
-}
-function goToIndex() {
-    JAVA_CONTROLLER.goToIndex();
-}
-
-function viewProductCreate(){
-    JAVA_CONTROLLER.viewProductsCreate();
 }

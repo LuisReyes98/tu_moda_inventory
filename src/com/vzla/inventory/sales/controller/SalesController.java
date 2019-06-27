@@ -10,7 +10,7 @@ import com.vzla.inventory.controller.NavigationController;
 public class SalesController extends MainController {
 
     public void viewSales() {
-        NavigationController.goToView("sales_index");
+        NavigationController.goToView("sales_index", true, true);
 
     }
 
