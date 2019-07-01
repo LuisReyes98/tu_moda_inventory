@@ -48,7 +48,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>¿Estas seguro de eliminar este producto?</p>
+                                            <p>¿Estas seguro de eliminar este producto? ,<strong>Esta acción no se puede deshacer</strong></p>
                                             <p> <strong>Categoria:</strong> {{product.getCategory()}}</p>
                                             <p> <strong>Nombre:</strong> {{product.getName()}}</p>
                                             <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
@@ -57,11 +57,11 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-block btn-secondary"
                                                 data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                            <button type="button" class="btn btn-danger" v-on:click="deleteProduct(product.getId())" >Eliminar</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> <!-- end delete modal -->
                         <i class="mdi mdi-lead-pencil text-warning table_action_icon" data-tooltip="tooltip"
                             data-placement="top"
                             title="Editar" v-on:click="editProduct(product.getId())"></i>

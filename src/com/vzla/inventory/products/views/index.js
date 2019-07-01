@@ -16,7 +16,10 @@ function preload() {
             },
             editProduct: function(id){
                 JAVA_CONTROLLER.viewProductsEdit(id);
-            }
+            },
+            deleteProduct: function (id) {
+                JAVA_CONTROLLER.deleteProduct(id);
+            },
         },
         filters: {
             decimal: function(num) {

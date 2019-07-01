@@ -19,6 +19,9 @@ public class ProductsController extends MainController {
     public String modelAction = "";
     public boolean isEditing;
 
+    public ProductsController() {
+    }
+
     public void viewProductsCreate() {
         this.product = new Product();
         this.modelAction = "Crear";
@@ -85,6 +88,18 @@ public class ProductsController extends MainController {
             }
         }
         this.viewProducts();
+    }
+
+    public void deleteProduct(int id) {
+        try {
+
+            Main.db.productDao.deleteById(id);
+            this.viewProducts();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error ProductsController deleteProduct " + ex.getMessage());
+
+        }
     }
 
 }

@@ -19,6 +19,7 @@ SQLite
 
 ## Todo
 
-- Añadir lista que guarda los controladores para acceder mas facilmente a ellos y no crear una nueva instancia cada vez que se va a nav
 - modelo de ventas para permanencia en base de datos
 - vistas
+- Agregar borrado logico para evitar perdida de datos no deseada
+- implementar nuevo esquema de base de datos
