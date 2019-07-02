@@ -3,6 +3,7 @@ package com.vzla.inventory.products.controller;
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
 import com.vzla.inventory.main.Main;
+import com.vzla.inventory.products.models.Category;
 import com.vzla.inventory.products.models.Product;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -59,7 +60,9 @@ public class ProductsController extends MainController {
 
     }
 
-    public void saveNewProduct(String category, String name, int stock, float cost) {
+    public void saveNewProduct(String categoryName, int categoryId, String name, int stock, float cost) {
+        Category category = prepareCategory(categoryName, categoryId);
+
         this.product = new Product(category, name, stock, cost);
         try {
             Main.db.productDao.create(product);
@@ -71,7 +74,9 @@ public class ProductsController extends MainController {
 
     }
 
-    public void updateProduct(String category, String name, int stock, float cost, int id) {
+    public void updateProduct(String categoryName, int categoryId, String name, int stock, float cost, int id) {
+        Category category = prepareCategory(categoryName, categoryId);
+
         if (this.isEditing && this.product.getId() == id) {
             this.isEditing = false;
             this.product.setCategory(category);
@@ -100,6 +105,31 @@ public class ProductsController extends MainController {
             System.out.println("Error ProductsController deleteProduct " + ex.getMessage());
 
         }
+    }
+
+    /**
+     * para marcar que el objeto no existe aun enviar el nombre y su id == 0
+     *
+     * @param categoryName
+     * @param categoryId
+     * @return
+     */
+    private Category prepareCategory(String categoryName, int categoryId) {
+        Category category = new Category();
+
+        try {
+            if (categoryId <= 0) {
+                category = new Category(categoryName);
+                Main.db.categoryDao.create(category);
+            } else {
+                category = Main.db.categoryDao.queryForId(categoryId);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error ProductsController saveNewProduct creating category " + ex.getMessage());
+        }
+        return category;
     }
 
 }
