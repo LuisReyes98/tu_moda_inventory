@@ -17,6 +17,7 @@ public class ProductsController extends MainController {
 
     public Product product;
     public Object products[];
+    public Object categories[];
     public String modelAction = "";
     public boolean isEditing;
 
@@ -24,15 +25,18 @@ public class ProductsController extends MainController {
     }
 
     public void viewProductsCreate() {
-        this.product = new Product();
+        this.product = new Product(new Category());
         this.modelAction = "Crear";
         this.isEditing = false;
+        prepareForm();
+
         NavigationController.goToView("products_create", true, true);
     }
 
     public void viewProductsEdit(int id) {
         this.modelAction = "Editar";
         this.isEditing = true;
+        prepareForm();
 
         try {
             //find the product
@@ -108,7 +112,8 @@ public class ProductsController extends MainController {
     }
 
     /**
-     * para marcar que el objeto no existe aun enviar el nombre y su id == 0
+     * to set a new category it will take the categoryName and categoryId must
+     * be 0. This is to prepare the category before saving a product
      *
      * @param categoryName
      * @param categoryId
@@ -132,4 +137,19 @@ public class ProductsController extends MainController {
         return category;
     }
 
+    /**
+     * Method to execute before creating or editing a product
+     */
+    private void prepareForm() {
+        getCategories();
+    }
+
+    private void getCategories() {
+        try {
+            this.categories = Main.db.categoryDao.queryForAll().toArray();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error ProductsController getCategories " + ex.getMessage());
+        }
+    }
 }

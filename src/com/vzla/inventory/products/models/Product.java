@@ -45,6 +45,10 @@ public class Product {
 
     }
 
+    public Product(Category category) {
+        this.category = category;
+    }
+
     public Product(Category category, String name, int stock, float cost) {
         this.category = category;
         this.name = name;

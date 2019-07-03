@@ -19612,5 +19612,7 @@ a.text-dark:focus, a.text-dark:hover {
 #tu_moda_app .table_action_icon {
   cursor: pointer;
   font-size: 24px; }
+#tu_moda_app .option {
+  font-size: 1rem; }
 
 /*# sourceMappingURL=styles.css.map */

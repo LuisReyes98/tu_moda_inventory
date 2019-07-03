@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 <tr v-for="product in products" v-bind:key="product.getId()">
-                    <td>{{product.getCategory()}}</td>
+                    <td>{{product.getCategory().getName()}}</td>
                     <td>{{product.getName()}}</td>
                     <td>{{product.getStock()}}</td>
                     <td>{{product.getCost() | decimal }}</td>
@@ -36,38 +36,38 @@
                         <i class="mdi mdi-trash-can text-danger table_action_icon" data-tooltip="tooltip"
                             data-placement="top" title="Eliminar" data-toggle="modal" v-bind:data-target="'#delete' +
                             product.getId()"></i>
-                            <!-- Modal delete item -->
-                            <div class="modal fade" v-bind:id="'delete' + product.getId()" tabindex="-1" role="dialog"
-                                v-bind:aria-labelledby="'delete' + product.getId() + 'Label'" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" v-bind:id="'delete' + product.getId() + 'Label'"> Atención! </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>¿Estas seguro de eliminar este producto? ,<strong>Esta acción no se puede deshacer</strong></p>
-                                            <p> <strong>Categoria:</strong> {{product.getCategory()}}</p>
-                                            <p> <strong>Nombre:</strong> {{product.getName()}}</p>
-                                            <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
-                                            <p> <strong>Precio:</strong> {{product.getCost() | decimal }}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-block btn-secondary"
-                                                data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-danger" v-on:click="deleteProduct(product.getId())" >Eliminar</button>
-                                        </div>
+                            <!-- Edit button -->
+                        <i class="mdi mdi-lead-pencil text-warning table_action_icon" data-tooltip="tooltip"
+                        data-placement="top"
+                        title="Editar" v-on:click="editProduct(product.getId())"></i>
+
+                        <!-- Modal delete item -->
+                        <div class="modal fade" v-bind:id="'delete' + product.getId()" tabindex="-1" role="dialog"
+                            v-bind:aria-labelledby="'delete' + product.getId() + 'Label'" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" v-bind:id="'delete' + product.getId() + 'Label'"> Atención! </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Estas seguro de eliminar este producto? ,<strong>Esta acción no se puede deshacer</strong></p>
+                                        <p> <strong>Categoria:</strong> {{product.getCategory().getName()}}</p>
+                                        <p> <strong>Nombre:</strong> {{product.getName()}}</p>
+                                        <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
+                                        <p> <strong>Precio:</strong> {{product.getCost() | decimal }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-block btn-secondary"
+                                            data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" v-on:click="deleteProduct(product.getId())" >Eliminar</button>
                                     </div>
                                 </div>
-                            </div> <!-- end delete modal -->
-                        <i class="mdi mdi-lead-pencil text-warning table_action_icon" data-tooltip="tooltip"
-                            data-placement="top"
-                            title="Editar" v-on:click="editProduct(product.getId())"></i>
+                            </div>
+                        </div> <!-- end delete modal -->
                     </td>
-
-
                 </tr>
             </tbody>
         </table>
