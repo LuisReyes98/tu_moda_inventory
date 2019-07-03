@@ -20,6 +20,7 @@ import com.vzla.inventory.sales.models.Sale;
 import com.vzla.inventory.sales.models.SaleDeleted;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,5 +102,63 @@ public class DatabaseDAO {
             System.out.println("Error DatabaseDAO failed to create DAOs" + e.getMessage());
         }
 
+//        ormForeingTest();
+//        ormReadTest();
     }
+
+//    private void ormTest() {
+//        Category cat = new Category("pants");
+//        Product pro = new Product(cat, "negra", 12, 12.2f, new Date(), new Date());
+//        Product pro2;
+//        try {
+//            this.categoryDao.create(cat);
+//            this.productDao.create(pro);
+//
+//            pro2 = this.productDao.queryForId(pro.getId());
+//
+//            this.categoryDao.refresh(pro2.getCategory());
+//
+//            System.out.println(pro2.getCategory().getName() + " " + pro2.getName() + " " + pro2.getStock() + " " + pro2.getCost());
+//        } catch (SQLException e) {
+//            System.out.println("Error Main" + e.getMessage());
+//        }
+//
+//    }
+//    private void ormReadTest() {
+//        Product pro2;
+//        try {
+//            pro2 = this.productDao.queryForId(1);
+//            this.categoryDao.refresh(pro2.getCategory());
+//            System.out.println(pro2.getCategory().getName() + " " + pro2.getName() + " " + pro2.getStock() + " " + pro2.getCost());
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DatabaseDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    private void ormForeingTest() {
+//        Category cat = new Category("Pantalones");
+//        try {
+//            this.categoryDao.create(cat);
+//
+//            Product pro = new Product(cat, "blancos", 12, 12.2f, new Date(), new Date());
+//            Product pro2 = new Product(cat, "negros", 12, 12.2f, new Date(), new Date());
+//            Product pro3 = new Product(cat, "azules", 12, 12.2f, new Date(), new Date());
+//
+//            this.productDao.create(pro);
+//            this.productDao.create(pro2);
+//            this.productDao.create(pro3);
+//
+//            this.categoryDao.refresh(cat);
+//            for (Product p : cat.getProducts()) {
+//                System.out.println(p.getCategory().getName() + " " + p.getName() + " " + p.getStock() + " " + p.getCost());
+//
+//            }
+//
+//            cat.getProducts().forEach((p) -> {
+//                System.out.println(p.getCategory().getName() + " " + p.getName() + " " + p.getStock() + " " + p.getCost());
+//            });
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DatabaseDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }

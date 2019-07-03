@@ -1,6 +1,8 @@
 package com.vzla.inventory.products.models;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
@@ -19,6 +21,8 @@ public class Category {
     @DatabaseField(canBeNull = false, columnName = NAME_FIELD_NAME)
     private String name;
 
+//    @ForeignCollectionField
+//    private ForeignCollection<Product> products;
     public Category() {
     }
 
@@ -42,4 +46,11 @@ public class Category {
         this.name = name;
     }
 
+//    public ForeignCollection<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(ForeignCollection<Product> products) {
+//        this.products = products;
+//    }
 }

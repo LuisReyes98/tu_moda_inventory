@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
  *
  * @author luisr
  */
-@DatabaseTable(tableName = "sales_deleted")
+@DatabaseTable(tableName = "sale_deleted")
 public class SaleDeleted extends Sale {
 
     public SaleDeleted() {

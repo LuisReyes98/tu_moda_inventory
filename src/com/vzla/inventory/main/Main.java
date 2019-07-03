@@ -47,19 +47,4 @@ public class Main extends Application {
 
     }
 
-//    private void ormTest() {
-//        Product pro = new Product("Camisa", "negra", 12);
-//        Product pro2 = null;
-//        db.startConnections();
-//        try {
-//            db.productDao.create(pro);
-//
-//            pro2 = db.productDao.queryForId(pro.getId());
-//
-//            System.out.println(pro2.getCategory() + " " + pro2.getName() + " " + pro2.getStock());
-//        } catch (SQLException e) {
-//            System.out.println("Error Main" + e.getMessage());
-//        }
-//
-//    }
 }

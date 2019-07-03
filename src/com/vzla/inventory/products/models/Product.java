@@ -24,7 +24,7 @@ public class Product {
     @DatabaseField(generatedId = true, columnName = ID_FIELD_NAME)
     private int id;
 
-    @DatabaseField(canBeNull = false, columnName = CATEGORY_FIELD_NAME, foreign = true)
+    @DatabaseField(canBeNull = false, columnName = CATEGORY_FIELD_NAME, foreign = true, foreignAutoRefresh = true)
     private Category category;
 
     @DatabaseField(canBeNull = false, columnName = NAME_FIELD_NAME)
@@ -50,6 +50,15 @@ public class Product {
         this.name = name;
         this.stock = stock;
         this.cost = cost;
+    }
+
+    public Product(Category category, String name, int stock, float cost, Date createdAt, Date updatedAt) {
+        this.category = category;
+        this.name = name;
+        this.stock = stock;
+        this.cost = cost;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getId() {
@@ -90,6 +99,22 @@ public class Product {
 
     public void setCost(float cost) {
         this.cost = cost;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }
