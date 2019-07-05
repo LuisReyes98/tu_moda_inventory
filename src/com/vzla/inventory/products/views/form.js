@@ -5,8 +5,6 @@ function preload() {
     app = new Vue({
         el: '#tu_moda_app',
         data: {
-            category_id: JAVA_CONTROLLER.product.getCategory().getId(),
-            category_name: JAVA_CONTROLLER.product.getCategory().getName(),
             name: JAVA_CONTROLLER.product.getName(),
             stock: JAVA_CONTROLLER.product.getStock(),
             cost: Math.round(JAVA_CONTROLLER.product.getCost() * 100) / 100,

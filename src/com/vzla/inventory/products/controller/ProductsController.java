@@ -20,6 +20,7 @@ public class ProductsController extends MainController {
     public Object categories[];
     public String modelAction = "";
     public boolean isEditing;
+    public Category category;
 
     public ProductsController() {
     }
@@ -65,7 +66,7 @@ public class ProductsController extends MainController {
     }
 
     public void saveNewProduct(String categoryName, int categoryId, String name, int stock, float cost) {
-        Category category = prepareCategory(categoryName, categoryId);
+        this.category = prepareCategory(categoryName, categoryId);
 
         this.product = new Product(category, name, stock, cost);
         try {
@@ -79,7 +80,7 @@ public class ProductsController extends MainController {
     }
 
     public void updateProduct(String categoryName, int categoryId, String name, int stock, float cost, int id) {
-        Category category = prepareCategory(categoryName, categoryId);
+        this.category = prepareCategory(categoryName, categoryId);
 
         if (this.isEditing && this.product.getId() == id) {
             this.isEditing = false;
@@ -120,21 +121,21 @@ public class ProductsController extends MainController {
      * @return
      */
     private Category prepareCategory(String categoryName, int categoryId) {
-        Category category = new Category();
+        Category categorieDumb = new Category();
 
         try {
             if (categoryId <= 0) {
-                category = new Category(categoryName);
-                Main.db.categoryDao.create(category);
+                categorieDumb = new Category(categoryName);
+                Main.db.categoryDao.create(categorieDumb);
             } else {
-                category = Main.db.categoryDao.queryForId(categoryId);
+                categorieDumb = Main.db.categoryDao.queryForId(categoryId);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error ProductsController saveNewProduct creating category " + ex.getMessage());
         }
-        return category;
+        return categorieDumb;
     }
 
     /**

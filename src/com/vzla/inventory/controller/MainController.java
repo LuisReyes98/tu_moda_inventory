@@ -39,4 +39,9 @@ public class MainController {
 
     }
 
+    public void goToCategories() {
+        Main.navController.categoriesController.viewCategories();
+
+    }
+
 }

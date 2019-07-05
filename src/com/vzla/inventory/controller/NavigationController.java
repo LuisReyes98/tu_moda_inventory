@@ -8,7 +8,9 @@ package com.vzla.inventory.controller;
 import com.vzla.inventory.home.controller.IndexController;
 import java.util.HashMap;
 import com.vzla.inventory.main.Main;
+import com.vzla.inventory.products.controller.CategoriesController;
 import com.vzla.inventory.products.controller.ProductsController;
+
 import com.vzla.inventory.sales.controller.SalesController;
 import javafx.concurrent.Worker;
 import javafx.scene.layout.StackPane;
@@ -27,6 +29,7 @@ public class NavigationController implements NavigationInterface {
 
     public IndexController indexController;
     public ProductsController productsController;
+    public CategoriesController categoriesController;
     public SalesController salesController;
 
     private WebView browser;
@@ -44,12 +47,14 @@ public class NavigationController implements NavigationInterface {
         indexController = new IndexController();
         productsController = new ProductsController();
         salesController = new SalesController();
+        categoriesController = new CategoriesController();
 
         controllerHash.put("index", indexController);
 
         controllerHash.put("products_index", productsController);
         controllerHash.put("products_create", productsController);
         controllerHash.put("products_edit", productsController);
+        controllerHash.put("categories_index", categoriesController);
 
         controllerHash.put("sales_index", salesController);
 
@@ -63,6 +68,7 @@ public class NavigationController implements NavigationInterface {
         urlHash.put("products_index", PRODUCTS_INDEX_URL);
         urlHash.put("products_create", PRODUCTS_FORM_URL);
         urlHash.put("products_edit", PRODUCTS_FORM_URL);
+        urlHash.put("categories_index", CATEGORIES_INDEX_URL);
 
         urlHash.put("sales_index", SALES_INDEX_URL);
 

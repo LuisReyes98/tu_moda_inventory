@@ -2,7 +2,7 @@ let app;
 
 function preload() {
     app = new Vue({
-        el: '#app',
+        el: '#tu_moda_app',
         data: {
             products: [],
         }

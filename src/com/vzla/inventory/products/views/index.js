@@ -11,6 +11,9 @@ function preload() {
                 JAVA_CONTROLLER.goToIndex();
 
             },
+            goToCategories: function () {  
+                JAVA_CONTROLLER.goToCategories();
+            },
             viewProductCreate: function () {
                 JAVA_CONTROLLER.viewProductsCreate();
             },
