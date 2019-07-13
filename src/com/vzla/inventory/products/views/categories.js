@@ -6,12 +6,10 @@ function preload() {
         data: {
             categories: JAVA_CONTROLLER.categories,
             category_name: null,
-            category_id: null,
         },
         methods: {
             editCategory: function (id) {
-                // JAVA_CONTROLLER.viewCategoryEdit(id);
-                JAVA_CONTROLLER.editCategory(id, $(`#category_name_${id}`).val());
+                JAVA_CONTROLLER.updateCategory(id, $(`#category_name_${id}`).val());
 
             },
             deleteCategory: function (id,name) {
@@ -28,7 +26,7 @@ function preload() {
                 JAVA_CONTROLLER.goToProducts();
             },
             createCategory: function () {
-
+                JAVA_CONTROLLER.createCategory(this.category_name);
             },
 
         },

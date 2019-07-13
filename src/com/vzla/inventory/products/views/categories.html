@@ -14,10 +14,13 @@
         <h2>Categorias</h2>
 
         <button v-on:click="goToProducts">Volver</button>
-        <button v-on:click="createCategory" class="btn btn-success" >
+        <button
+            data-toggle="modal"
+            data-target="#new_category"
+            class="btn btn-success">
             Crear Categoria
         </button>
-        <table class="table table-hover table-striped mt-2">
+        <table class="table table-hover table-striped mt-2 _table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nombre</th>
@@ -29,20 +32,34 @@
                     <td>{{category.getName()}}</td>
                     <td>
                         <!-- delete category -->
-                        <i class="mdi mdi-trash-can text-danger table_action_icon" data-tooltip="tooltip"
-                            data-placement="top" title="Eliminar" data-toggle="modal" v-bind:data-target="'#delete' +
-                            category.getId()"></i>
+                        <i
+                            class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
+                            data-placement="top"
+                            title="Eliminar"
+                            data-toggle="modal"
+                            v-bind:data-target="'#delete' + category.getId()"
+                            ></i>
                         <!-- Edit button -->
-                        <i class="mdi mdi-lead-pencil text-warning table_action_icon" data-tooltip="tooltip"
-                            data-placement="top" title="Editar" v-on:click="editCategory(category.getId())"></i>
+                        <i
+                            class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
+                            data-toggle="modal"
+                            v-bind:data-target="'#edit' + category.getId()"
+                            data-placement="top"
+                            title="Editar"
+                            ></i>
 
                         <!-- Modal delete item -->
-                        <div class="modal fade" v-bind:id="'delete' + category.getId()" tabindex="-1" role="dialog"
-                            v-bind:aria-labelledby="'delete' + category.getId() + 'Label'" aria-hidden="true">
+                        <div
+                            class="modal fade _modal"
+                            v-bind:id="'delete' + category.getId()"
+                            tabindex="-1"
+                            role="dialog"
+                            v-bind:aria-labelledby="'delete' + category.getId() + '_title'" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" v-bind:id="'delete' + category.getId() + 'Label'">
+                                        <h5 class="modal-title modal__title text-danger"
+                                            v-bind:id="'delete' + category.getId() + '_title'">
                                             Atención! </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -65,12 +82,13 @@
                         </div> <!-- end delete modal -->
 
                         <!-- Start Edit modal -->
-                        <div class="modal fade" v-bind:id="'edit' + category.getId()" tabindex="-1" role="dialog"
+                        <div class="modal fade _modal" v-bind:id="'edit' + category.getId()" tabindex="-1" role="dialog"
                             v-bind:aria-labelledby="'edit' + category.getId() + '_title'" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" v-bind:id="'edit' + category.getId() + '_title'">
+                                        <h5 class="modal-title modal__title"
+                                            v-bind:id="'edit' + category.getId() + '_title'">
                                             Editando Categoria </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -78,9 +96,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group col-md-12">
-                                            <label v-bind:for="'category_name_'+ category.getId()">Precio</label>
-                                            <input type="number" class="form-control" v-bind:id="'category_name_'+ category.getId()"
-                                                placeholder="Precio" :value="category.getName()">
+                                            <label v-bind:for="'category_name_'+ category.getId()">Nombre</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                v-bind:id="'category_name_'+ category.getId()"
+                                                placeholder="Nombre"
+                                                v-bind:value="category.getName()">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -90,35 +112,69 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- End Edit modal-->
+                        </div> 
+                        <!-- End Edit modal-->
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- Generic Modal -->
-    <div class="modal fade" id="generic_modal" tabindex="-1" role="dialog"
-        aria-labelledby="generic_modal_title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="generic_modal_title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div id="generic_modal_body" class="modal-body">
-                    
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal"> OK </button>
+        <!-- Generic Modal -->
+        <div class="modal fade _modal" id="generic_modal" tabindex="-1" role="dialog"
+            aria-labelledby="generic_modal_title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title modal__title" id="generic_modal_title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="generic_modal_body" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal"> OK </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> 
-    <!-- end Generic modal -->
+        <!-- end Generic modal -->
+    
+        <!-- Start Create modal -->
+        <div class="modal fade _modal" id="new_category" tabindex="-1" role="dialog"
+            aria-labelledby="new_category_title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title modal__title" id="new_category_title">
+                            Nueva Categoria </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group col-md-12">
+                            <label for="new_category_name">
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                v-model="category_name"
+                                id="new_category_name"
+                                placeholder="Nombre" >
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success"
+                            v-on:click="createCategory">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Create modal-->
+    </div>
+
 </body>
 
 <script src="../../assets/javascript/vue.js"></script>

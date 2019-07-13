@@ -19607,12 +19607,27 @@ a.text-dark:focus, a.text-dark:hover {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
-#tu_moda_app .pointer {
+.text__black {
+  color: #000; }
+
+.background__black {
+  background-color: #000; }
+
+.text__white {
+  color: #FFF; }
+
+.background__white {
+  background-color: #FFF; }
+
+.pointer {
   cursor: pointer; }
-#tu_moda_app .table_action_icon {
+
+._table .table__action_icon {
   cursor: pointer;
   font-size: 24px; }
-#tu_moda_app .option {
-  font-size: 1rem; }
+
+._modal .modal__title {
+  font-size: 2rem;
+  font-weight: bold; }
 
 /*# sourceMappingURL=styles.css.map */

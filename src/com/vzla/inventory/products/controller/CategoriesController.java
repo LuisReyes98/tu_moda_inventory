@@ -1,8 +1,6 @@
 package com.vzla.inventory.products.controller;
 
 import com.j256.ormlite.dao.GenericRawResults;
-import com.j256.ormlite.stmt.PreparedQuery;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
 import com.vzla.inventory.main.Main;
@@ -69,5 +67,39 @@ public class CategoriesController extends MainController {
         }
         this.viewCategories(); //has been safely deleted then reload
         return true;
+    }
+
+    public void updateCategory(int id, String name) {
+
+        try {
+            if (id > 0) {
+                this.category = Main.db.categoryDao.queryForId(id);
+                if (this.category != null) {
+                    this.category.setName(name);
+                    Main.db.categoryDao.update(this.category);
+
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriesController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error CategoriesController updateCategory " + ex.getMessage());
+
+        }
+        this.viewCategories();
+
+    }
+
+    public void createCategory(String name) {
+        this.category = new Category(name);
+
+        try {
+            Main.db.categoryDao.create(category);
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriesController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error CategoriesController createCategory " + ex.getMessage());
+        }
+        this.viewCategories();
+
     }
 }

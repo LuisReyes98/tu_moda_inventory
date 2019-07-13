@@ -18,7 +18,7 @@
         <button v-on:click="goToCategories">
             Categorias
         </button>
-        <table class="table table-hover table-striped mt-2">
+        <table class="table table-hover table-striped mt-2 _table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Categoria </th>
@@ -36,21 +36,32 @@
                     <td>{{product.getCost() | decimal }}</td>
                     <td>
                         <!-- delete product -->
-                        <i class="mdi mdi-trash-can text-danger table_action_icon" data-tooltip="tooltip"
-                            data-placement="top" title="Eliminar" data-toggle="modal" v-bind:data-target="'#delete' +
-                            product.getId()"></i>
+                        <i
+                            class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
+                            data-placement="top"
+                            title="Eliminar"
+                            data-toggle="modal" v-bind:data-target="'#delete' + product.getId()"
+                            ></i>
                             <!-- Edit button -->
-                        <i class="mdi mdi-lead-pencil text-warning table_action_icon" data-tooltip="tooltip"
-                        data-placement="top"
-                        title="Editar" v-on:click="editProduct(product.getId())"></i>
+                        <i
+                            class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
+                            data-placement="top"
+                            title="Editar"
+                            v-on:click="editProduct(product.getId())"
+                            ></i>
 
                         <!-- Modal delete item -->
-                        <div class="modal fade" v-bind:id="'delete' + product.getId()" tabindex="-1" role="dialog"
-                            v-bind:aria-labelledby="'delete' + product.getId() + 'Label'" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                        <div
+                            class="modal fade _modal"
+                            v-bind:id="'delete' + product.getId()"
+                            tabindex="-1"
+                            role="dialog"
+                            v-bind:aria-labelledby="'delete' + product.getId() + '_title'" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" v-bind:id="'delete' + product.getId() + 'Label'"> Atención! </h5>
+                                        <h4 class="modal-title modal__title text-danger"
+                                            v-bind:id="'delete' + product.getId() + '_title'"> Atención! </h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

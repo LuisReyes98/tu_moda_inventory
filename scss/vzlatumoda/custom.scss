@@ -1,16 +1,22 @@
+@import 'colors';
+
 #tu_moda_app {
     @extend .p-4 ;
-    
-    .pointer{
+}
+.pointer{
+    cursor: pointer;
+}
+._table{
+    .table__action_icon{
         cursor: pointer;
+        font-size: 24px;
     }
 
-    .table_action_icon{
-        cursor: pointer;
-        font-size: 24px
-    }
+}
 
-    .option{
-        font-size: 1rem;
+._modal{
+    .modal__title{
+        font-size: 2rem;
+        font-weight: bold;
     }
 }

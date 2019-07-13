@@ -1,0 +1,16 @@
+$project_colors: (
+    "black": #000,
+    "white": #FFF,
+    
+
+);
+
+@each $name , $color in $project_colors {
+    .text__#{$name + ""} {
+        color: $color;
+    }
+
+    .background__#{$name + ""} {
+        background-color: $color;
+    }
+}

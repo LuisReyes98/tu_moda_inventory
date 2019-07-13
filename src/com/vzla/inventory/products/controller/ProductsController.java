@@ -65,7 +65,7 @@ public class ProductsController extends MainController {
 
     }
 
-    public void saveNewProduct(String categoryName, int categoryId, String name, int stock, float cost) {
+    public void createProduct(String categoryName, int categoryId, String name, int stock, float cost) {
         this.category = prepareCategory(categoryName, categoryId);
 
         this.product = new Product(category, name, stock, cost);

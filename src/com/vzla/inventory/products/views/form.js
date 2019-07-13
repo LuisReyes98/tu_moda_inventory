@@ -30,7 +30,7 @@ function preload() {
                 if (this.isEditing) {
                     JAVA_CONTROLLER.updateProduct(nameCat, idCat, this.name, this.stock, this.cost, this.id);
                 }else{
-                    JAVA_CONTROLLER.saveNewProduct(nameCat, idCat, this.name, this.stock, this.cost);
+                    JAVA_CONTROLLER.createProduct(nameCat, idCat, this.name, this.stock, this.cost);
                 }
             },
             goBack: function () {
