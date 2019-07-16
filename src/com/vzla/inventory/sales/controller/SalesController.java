@@ -3,6 +3,7 @@ package com.vzla.inventory.sales.controller;
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
 import com.vzla.inventory.main.Main;
+import com.vzla.inventory.products.models.Product;
 import com.vzla.inventory.sales.models.Sale;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ public class SalesController extends MainController {
         sale = new Sale();
 
         try {
-//            Main.db.saleDao.refresh(sale);
+            Main.db.saleDao.refresh(sale);
 
             products = Main.db.productDao.queryForAll().toArray();
         } catch (SQLException ex) {
@@ -40,6 +41,10 @@ public class SalesController extends MainController {
 
         NavigationController.goToView(
                 "sales_create", true, true);
+    }
+
+    public Product getEmptyProduct() {
+        return new Product();
     }
 
 }

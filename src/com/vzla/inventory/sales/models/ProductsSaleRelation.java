@@ -24,8 +24,7 @@ public class ProductsSaleRelation {
 
     public final static String AMOUNT_FIELD_NAME = "amount";
 
-    public final static String TOTAL_PRICE_FIELD_NAME = "total_price";
-
+//    public final static String TOTAL_PRICE_FIELD_NAME = "total_price";
     public final static String INDIVIDUAL_PRICE_FIELD_NAME = "individual_price";
 
     public final static String CREATED_FIELD_NAME = "created_at";
@@ -47,9 +46,8 @@ public class ProductsSaleRelation {
     @DatabaseField(canBeNull = false, columnName = AMOUNT_FIELD_NAME)
     private int amount;
 
-    @DatabaseField(canBeNull = false, columnName = TOTAL_PRICE_FIELD_NAME)
-    private float totalPrice;
-
+//    @DatabaseField(canBeNull = false, columnName = TOTAL_PRICE_FIELD_NAME)
+//    private float totalPrice;
     @DatabaseField(canBeNull = false, columnName = INDIVIDUAL_PRICE_FIELD_NAME)
     private float individualPrice;
 
@@ -78,14 +76,13 @@ public class ProductsSaleRelation {
         this.amount = amount;
     }
 
-    public float getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
+//    public float getTotalPrice() {
+//        return totalPrice;
+//    }
+//
+//    public void setTotalPrice(float totalPrice) {
+//        this.totalPrice = totalPrice;
+//    }
     public Product getProduct() {
         return product;
     }

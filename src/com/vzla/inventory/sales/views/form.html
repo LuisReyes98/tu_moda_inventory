@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,28 @@
         <button v-on:click="viewSales()">
             Volver
         </button>
-        <div v-for=" soldProduct in soldProducts ">
+        <div class="border border-dark p-2 m-2" v-for=" soldProduct in soldProducts " >
+            <div class="row">
+                <select class="custom-select col-md-6" v-model="soldProduct.memberProduct">
+                    <option value="0">Escoge un Producto</option>
+                    <option v-for="product in products" v-bind:value="product.getId()">
+                        {{product.getName()}}</option>
+                </select>
+                <input class="form-control col-md-6" v-model="soldProduct.amount" type="number" name="amount">
 
+            </div>
+            {{soldProduct.memberProduct.getName()}}
+            {{soldProduct.amount}}
+            <div>
+               <p>Costo por unidad: {{soldProduct.individualPrice}}</p>
+               <p>Costo Total: {{soldProduct.totalCost()}}</p>
+
+            </div>
         </div>
+        <button v-on:click="addProduct">
+            Agregar producto
+        </button>
+        
         <h2>
             Total Price: {{sale.getTotalPrice()}}
         </h2>

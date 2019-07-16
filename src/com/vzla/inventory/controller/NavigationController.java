@@ -103,7 +103,23 @@ public class NavigationController implements NavigationInterface {
                         // overriding javascript console.log with JAVA_CONTROLLER.log()
                         webEngine.executeScript("console.log = function(message)\n"
                                 + "{\n"
-                                + "    JAVA_CONTROLLER.log(message);\n"
+                                + "    JAVA_CONTROLLER.log('[js log]' + message);\n"
+                                + "};");
+                        webEngine.executeScript("console.info = function(message)\n"
+                                + "{\n"
+                                + "    JAVA_CONTROLLER.log('[js info]' + message);\n"
+                                + "};");
+                        webEngine.executeScript("console.debug = function(message)\n"
+                                + "{\n"
+                                + "    JAVA_CONTROLLER.log('[js debug]' + message);\n"
+                                + "};");
+                        webEngine.executeScript("console.warn = function(message)\n"
+                                + "{\n"
+                                + "    JAVA_CONTROLLER.log('[js warn]' + message);\n"
+                                + "};");
+                        webEngine.executeScript("console.error = function(message)\n"
+                                + "{\n"
+                                + "    JAVA_CONTROLLER.log('[js error]' + message);\n"
                                 + "};");
                         if (willPreload) {
                             webEngine.executeScript("preload()");

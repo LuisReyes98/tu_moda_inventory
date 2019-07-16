@@ -13,5 +13,9 @@ function preload() {
     })
 }
 
+function load() {
+    
+}
+
 
 
