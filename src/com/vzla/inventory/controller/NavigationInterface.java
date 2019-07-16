@@ -17,5 +17,6 @@ public interface NavigationInterface {
     final String CATEGORIES_INDEX_URL = "/com/vzla/inventory/products/views/categories.html";
 
     final String SALES_INDEX_URL = "/com/vzla/inventory/sales/views/index.html";
+    final String SALES_FORM_INDEX_URL = "/com/vzla/inventory/sales/views/form.html";
 
 }

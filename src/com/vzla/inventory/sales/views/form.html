@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+
+</head>
+<body>
+    <div id="tu_moda_app">
+        <h2> Formulario Ventas </h2>
+        <button v-on:click="viewSales()">
+            Volver
+        </button>
+        <div v-for=" soldProduct in soldProducts ">
+
+        </div>
+        <h2>
+            Total Price: {{sale.getTotalPrice()}}
+        </h2>
+    </div>
+
+    <script src="../../assets/javascript/vue.js"></script>
+    <script src="form.js"></script>
+
+    <script src="../../assets/javascript/jquery.js"></script>
+    <script src="../../assets/javascript/popper.js"></script>
+    <script src="../../assets/javascript/bootstrap.min.js"></script>
+</body>
+</html>

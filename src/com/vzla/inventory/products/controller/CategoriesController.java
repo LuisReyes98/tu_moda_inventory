@@ -100,6 +100,5 @@ public class CategoriesController extends MainController {
             System.out.println("Error CategoriesController createCategory " + ex.getMessage());
         }
         this.viewCategories();
-
     }
 }

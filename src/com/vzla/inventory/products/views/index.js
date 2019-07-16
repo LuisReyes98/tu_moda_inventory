@@ -4,7 +4,7 @@ function preload() {
     app = new Vue({
         el: '#tu_moda_app',
         data: {
-            products: [],
+            products: JAVA_CONTROLLER.products,
         },
         methods: {
             goToIndex: function () {
@@ -33,7 +33,6 @@ function preload() {
 }
 
 function load() {
-    app.products = JAVA_CONTROLLER.products;
 
     $(function () {
         $('[data-tooltip="tooltip"]').tooltip();

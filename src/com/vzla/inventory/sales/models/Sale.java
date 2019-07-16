@@ -1,8 +1,10 @@
 package com.vzla.inventory.sales.models;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 import java.util.Date;
 
@@ -29,6 +31,9 @@ public class Sale {
 
     @DatabaseField(canBeNull = true, columnName = UPDATED_FIELD_NAME, dataType = DataType.DATE_LONG)
     private Date updatedAt;
+
+    @ForeignCollectionField
+    private ForeignCollection<ProductsSaleRelation> productsSaleRelation;
 
     public Sale() {
     }
@@ -63,6 +68,18 @@ public class Sale {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public ForeignCollection<ProductsSaleRelation> getProductsSaleRelation() {
+        return productsSaleRelation;
+    }
+
+    public void setProductsSaleRelation(ForeignCollection<ProductsSaleRelation> productsSaleRelation) {
+        this.productsSaleRelation = productsSaleRelation;
+    }
+
+    public Object[] getProductSalesRelationArray() {
+        return productsSaleRelation.toArray();
     }
 
 }

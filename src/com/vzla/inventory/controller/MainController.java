@@ -17,14 +17,14 @@ public class MainController {
     }
 
     /**
-     * Go to method to travel from current view to
+     * Go to method index view
      */
     public void goToIndex() {
         Main.navController.indexController.viewIndex();
     }
 
     /**
-     * Go to method to travel from current view to
+     * Go to product index view
      */
     public void goToProducts() {
         Main.navController.productsController.viewProducts();
@@ -32,15 +32,18 @@ public class MainController {
     }
 
     /**
-     * Go to method to travel from current view to
+     * Go to categories index view
      */
-    public void goToSales() {
-        Main.navController.salesController.viewSales();
+    public void goToCategories() {
+        Main.navController.categoriesController.viewCategories();
 
     }
 
-    public void goToCategories() {
-        Main.navController.categoriesController.viewCategories();
+    /**
+     * Go to method to sales index view
+     */
+    public void goToSales() {
+        Main.navController.salesController.viewSales();
 
     }
 

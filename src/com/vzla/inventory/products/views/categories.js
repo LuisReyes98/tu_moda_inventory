@@ -4,12 +4,12 @@ function preload() {
     app = new Vue({
         el: '#tu_moda_app',
         data: {
-            categories: JAVA_CONTROLLER.categories,
+            categories: [],
             category_name: null,
         },
         methods: {
-            editCategory: function (id) {
-                JAVA_CONTROLLER.updateCategory(id, $(`#category_name_${id}`).val());
+            editCategory: function (category) {
+                JAVA_CONTROLLER.updateCategory(category.id, category.newName);
 
             },
             deleteCategory: function (id,name) {
@@ -20,7 +20,6 @@ function preload() {
                     $(`#delete${id}`).modal('hide');
                     $("#generic_modal").modal('show');
                 }
-                // JAVA_CONTROLLER.deleteCategory(id);
             },
             goToProducts: function () {
                 JAVA_CONTROLLER.goToProducts();
@@ -32,8 +31,28 @@ function preload() {
         },
     })
 }
+class Category {
+    constructor(id,name){
+        this.id = id;
+        this.name = name;
+        this.newName = name;
+    }
+
+    getId(){
+        return this.id;
+    }
+
+    getName(){
+        return this.name;
+    }
+}
 
 function load() {
+    let categories = JAVA_CONTROLLER.categories;
+    categories.forEach(el => {
+        app.categories.push(new Category(el.getId(),el.getName()));
+    });
+
     $(function () {
         $('[data-tooltip="tooltip"]').tooltip();
     });

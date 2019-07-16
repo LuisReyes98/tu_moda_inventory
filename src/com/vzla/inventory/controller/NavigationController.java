@@ -57,6 +57,7 @@ public class NavigationController implements NavigationInterface {
         controllerHash.put("categories_index", categoriesController);
 
         controllerHash.put("sales_index", salesController);
+        controllerHash.put("sales_create", salesController);
 
     }
 
@@ -71,12 +72,13 @@ public class NavigationController implements NavigationInterface {
         urlHash.put("categories_index", CATEGORIES_INDEX_URL);
 
         urlHash.put("sales_index", SALES_INDEX_URL);
+        urlHash.put("sales_create", SALES_FORM_INDEX_URL);
 
     }
 
     /**
-     * Setting controller and view to load. "willPreload" to load vue,
-     * "willLoad" to load vue data
+     * loader of html, js views willPreload == true will, execute preload
+     * function willLoad == true will, execute load function
      *
      * @param urlName
      * @param willPreload

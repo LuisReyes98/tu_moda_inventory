@@ -20,7 +20,6 @@ import com.vzla.inventory.sales.models.Sale;
 import com.vzla.inventory.sales.models.SaleDeleted;
 
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -102,13 +102,13 @@
                                                 class="form-control"
                                                 v-bind:id="'category_name_'+ category.getId()"
                                                 placeholder="Nombre"
-                                                v-bind:value="category.getName()">
+                                                v-model="category.newName">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
                                         <button type="button" class="btn btn-success"
-                                            v-on:click="editCategory(category.getId())">Guardar</button>
+                                            v-on:click="editCategory(category)">Guardar</button>
                                     </div>
                                 </div>
                             </div>
