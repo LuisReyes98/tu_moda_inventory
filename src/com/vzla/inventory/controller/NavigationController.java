@@ -24,8 +24,8 @@ import netscape.javascript.JSObject;
  */
 public class NavigationController implements NavigationInterface {
 
-    private static HashMap<String, String> urlHash = new HashMap<String, String>();
-    private static HashMap<String, MainController> controllerHash = new HashMap<String, MainController>();
+    private static HashMap<String, String> urlHash = new HashMap<>();
+    private static HashMap<String, MainController> controllerHash = new HashMap<>();
 
     public IndexController indexController;
     public ProductsController productsController;

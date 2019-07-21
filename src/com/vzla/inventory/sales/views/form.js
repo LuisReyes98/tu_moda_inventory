@@ -1,11 +1,13 @@
 // sales form script
 let app;
 class SoldProduct{
-    constructor(id,memberProduct,amount){
+    constructor(id,listId,product,amount){
         this.id = id;
-        this.memberProduct = memberProduct;
+        this.listId = listId;
+        this.product = product;
+        this.productId = product.getId();
         this.amount = amount;
-        this.individualPrice = memberProduct.getCost();
+        this.individualPrice = product.getCost();
     }
 
     totalCost(){
@@ -20,15 +22,27 @@ function preload() {
             sale: JAVA_CONTROLLER.sale,
             products: JAVA_CONTROLLER.products,
             soldProducts: [],
+            soldProductListId: 1,
+            productsHash: JAVA_CONTROLLER.productsHash,
         },
         methods: {
             viewSales: function () {
                 JAVA_CONTROLLER.viewSales();
             },
             addProduct: function () {
-                this.soldProducts.push(new SoldProduct(0, JAVA_CONTROLLER.getEmptyProduct(), 1));
+                this.soldProducts.push(new SoldProduct(
+                    0,//id
+                    this.soldProductListId++,//list id
+                    JAVA_CONTROLLER.getEmptyProduct(),//product
+                    1//amount
+                    )
+                    );
             },
-        }
+            productTotalCost: function(productCost,amount) {
+                return productCost * amount;
+            }
+        },
+
     })
 }
 
