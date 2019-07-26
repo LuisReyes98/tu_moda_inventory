@@ -33,7 +33,7 @@
                     <td>{{product.getCategory().getName()}}</td>
                     <td>{{product.getName()}}</td>
                     <td>{{product.getStock()}}</td>
-                    <td>{{product.getCost() | decimal }}</td>
+                    <td>{{product.getPrice() | decimal }}</td>
                     <td>
                         <!-- delete product -->
                         <i
@@ -71,7 +71,7 @@
                                         <p> <strong>Categoria:</strong> {{product.getCategory().getName()}}</p>
                                         <p> <strong>Nombre:</strong> {{product.getName()}}</p>
                                         <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
-                                        <p> <strong>Precio:</strong> {{product.getCost() | decimal }}</p>
+                                        <p> <strong>Precio:</strong> {{product.getPrice() | decimal }}</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-block btn-secondary"

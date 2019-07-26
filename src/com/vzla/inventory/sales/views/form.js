@@ -1,18 +1,13 @@
 // sales form script
 let app;
 class SoldProduct{
-    constructor(id,listId,product,amount){
+    constructor(id,frontendKey,product_id,amount){
         this.id = id;
-        this.listId = listId;
-        this.product = product;
-        this.productId = product.getId();
+        this.frontendKey = frontendKey;
+        this.productId = product_id;
         this.amount = amount;
-        this.individualPrice = product.getCost();
     }
 
-    totalCost(){
-        return this.amount * this.individualPrice
-    }
 }
 
 function preload() {
@@ -21,8 +16,8 @@ function preload() {
         data: {
             sale: JAVA_CONTROLLER.sale,
             products: JAVA_CONTROLLER.products,
+            frontendKey: 1,
             soldProducts: [],
-            soldProductListId: 1,
             productsHash: JAVA_CONTROLLER.productsHash,
         },
         methods: {
@@ -30,16 +25,10 @@ function preload() {
                 JAVA_CONTROLLER.viewSales();
             },
             addProduct: function () {
-                this.soldProducts.push(new SoldProduct(
-                    0,//id
-                    this.soldProductListId++,//list id
-                    JAVA_CONTROLLER.getEmptyProduct(),//product
-                    1//amount
-                    )
-                    );
+                this.soldProducts.push(new SoldProduct(0,this.frontendKey++,0,1,));
             },
-            productTotalCost: function(productCost,amount) {
-                return productCost * amount;
+            productTotalPrice: function(productPrice,amount) {
+                return productPrice * amount;
             }
         },
 
@@ -47,9 +36,5 @@ function preload() {
 }
 
 function load() {
-    // let soldProducts = JAVA_CONTROLLER.sale.getProductSalesRelationArray();
-
-    // soldProducts.forEach(el => {
-    //     app.soldProducts.push(new SoldProduct(el.getId(), el.getProduct(), el.getAmount()))
-    // });
+    
 }

@@ -79,7 +79,7 @@ public class ProductsController extends MainController {
 
     }
 
-    public void updateProduct(String categoryName, int categoryId, String name, int stock, float cost, int id) {
+    public void updateProduct(String categoryName, int categoryId, String name, int stock, float price, int id) {
         this.category = prepareCategory(categoryName, categoryId);
 
         if (this.isEditing && this.product.getId() == id) {
@@ -87,7 +87,7 @@ public class ProductsController extends MainController {
             this.product.setCategory(category);
             this.product.setName(name);
             this.product.setStock(stock);
-            this.product.setCost(cost);
+            this.product.setPrice(price);
 
             try {
                 Main.db.productDao.update(product);

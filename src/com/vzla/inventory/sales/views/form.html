@@ -17,25 +17,26 @@
         <button v-on:click="addProduct">
             Agregar producto
         </button>
-        <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.listId" >
+        <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.frontendKey" >
             <div class="">
-                <select class="custom-select col-md-5 m-1" v-model="soldProduct.productId">
-
-                    <option value="0">Escoge un Producto</option>
-
-                    <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
-                        {{product.getName()}}</option>
-                </select>
-                <input class="form-control col-md-5 m-1" v-model="soldProduct.amount" type="number" name="amount">
-
+                <div class="form-group">
+                    <label for="">Producto</label>
+                    <select class="custom-select col-md-5 m-1" v-model="soldProduct.productId">
+                        <option value="0">Escoge un Producto</option>
+                        <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
+                        {{product.getCategory().getName()}}: {{product.getName()}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
+                    <input class="form-control col-md-5 m-1" v-model="soldProduct.amount"
+                        v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount">
+                </div>
             </div>
-            <div v-if="soldProduct.productId !== 0">
-                <p>Nombre {{productsHash.get(soldProduct.productId).getName()}}</p>
-                <p>Categoria {{productsHash.get(soldProduct.productId).getCategory().getName()}}</p>
-                <p>Cantidad {{soldProduct.amount}}</p>
-                <p> Costo {{productsHash.get(soldProduct.productId).getCost()}}
+            <div v-if="soldProduct.productId !== 0 ">
+                <p> Precio {{productsHash.get(soldProduct.productId).getPrice()}}
                 </p>
-                <p> Costo Total {{productTotalCost(productsHash.get(soldProduct.productId).getCost(),soldProduct.amount)}}
+                <p> Precio Total {{productTotalPrice(productsHash.get(soldProduct.productId).getPrice(),soldProduct.amount)}}
                 </p>
             </div>
         </div>

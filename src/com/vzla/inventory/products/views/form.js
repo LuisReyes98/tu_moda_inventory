@@ -7,7 +7,7 @@ function preload() {
         data: {
             name: JAVA_CONTROLLER.product.getName(),
             stock: JAVA_CONTROLLER.product.getStock(),
-            cost: Math.round(JAVA_CONTROLLER.product.getCost() * 100) / 100,
+            price: Math.round(JAVA_CONTROLLER.product.getPrice() * 100) / 100,
             id: JAVA_CONTROLLER.product.getId(),
             modelAction: JAVA_CONTROLLER.modelAction,
             newCategory: false,
@@ -28,9 +28,9 @@ function preload() {
                     nameCat = '';
                 }
                 if (this.isEditing) {
-                    JAVA_CONTROLLER.updateProduct(nameCat, idCat, this.name, this.stock, this.cost, this.id);
+                    JAVA_CONTROLLER.updateProduct(nameCat, idCat, this.name, this.stock, this.price, this.id);
                 }else{
-                    JAVA_CONTROLLER.createProduct(nameCat, idCat, this.name, this.stock, this.cost);
+                    JAVA_CONTROLLER.createProduct(nameCat, idCat, this.name, this.stock, this.price);
                 }
             },
             goBack: function () {

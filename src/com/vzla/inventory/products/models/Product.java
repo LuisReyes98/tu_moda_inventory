@@ -16,7 +16,7 @@ public class Product {
     public final static String CATEGORY_FIELD_NAME = "category_id";
     public final static String NAME_FIELD_NAME = "name";
     public final static String STOCK_FIELD_NAME = "stock";
-    public final static String COST_FIELD_NAME = "cost";
+    public final static String PRICE_FIELD_NAME = "price";
 
     public final static String CREATED_FIELD_NAME = "created_at";
     public final static String UPDATED_FIELD_NAME = "updated_at";
@@ -33,8 +33,8 @@ public class Product {
     @DatabaseField(canBeNull = false, columnName = STOCK_FIELD_NAME)
     private int stock;
 
-    @DatabaseField(canBeNull = false, columnName = COST_FIELD_NAME)
-    private float cost;
+    @DatabaseField(canBeNull = false, columnName = PRICE_FIELD_NAME)
+    private float price;
 
     @DatabaseField(canBeNull = true, columnName = CREATED_FIELD_NAME, dataType = DataType.DATE_LONG)
     private Date createdAt;
@@ -49,18 +49,18 @@ public class Product {
         this.category = category;
     }
 
-    public Product(Category category, String name, int stock, float cost) {
+    public Product(Category category, String name, int stock, float price) {
         this.category = category;
         this.name = name;
         this.stock = stock;
-        this.cost = cost;
+        this.price = price;
     }
 
-    public Product(Category category, String name, int stock, float cost, Date createdAt, Date updatedAt) {
+    public Product(Category category, String name, int stock, float price, Date createdAt, Date updatedAt) {
         this.category = category;
         this.name = name;
         this.stock = stock;
-        this.cost = cost;
+        this.price = price;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -97,12 +97,12 @@ public class Product {
         this.stock = stock;
     }
 
-    public float getCost() {
-        return cost;
+    public float getPrice() {
+        return price;
     }
 
-    public void setCost(float cost) {
-        this.cost = cost;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public Date getCreatedAt() {

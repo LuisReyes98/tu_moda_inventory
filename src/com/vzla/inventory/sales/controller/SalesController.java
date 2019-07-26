@@ -54,8 +54,4 @@ public class SalesController extends MainController {
                 "sales_create", true, true);
     }
 
-    public Product getEmptyProduct() {
-        return new Product();
-    }
-
 }
