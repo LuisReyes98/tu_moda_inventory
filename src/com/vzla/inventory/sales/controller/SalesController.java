@@ -42,6 +42,7 @@ public class SalesController extends MainController {
             productList = Main.db.productDao.queryForAll();
             products = productList.toArray();
 
+//            productsHash.put(0, new Product(new Category(""), "", 0, 0));
             productList.forEach((pro) -> {
                 productsHash.put(pro.getId(), pro);
             });

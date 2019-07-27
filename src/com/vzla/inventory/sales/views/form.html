@@ -21,10 +21,14 @@
             <div class="">
                 <div class="form-group">
                     <label for="">Producto</label>
-                    <select class="custom-select col-md-5 m-1" v-model="soldProduct.productId">
-                        <option value="0">Escoge un Producto</option>
+                    <select class="custom-select col-md-5 m-1" v-model="soldProduct.productId"
+                        v-bind:class="soldProduct.productId == 0 ? 'is-invalid' : 'is-valid'">
+                        <option value="0">
+                            Escoge un Producto
+                        </option>
                         <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
-                        {{product.getCategory().getName()}}: {{product.getName()}}</option>
+                            {{product.getCategory().getName()}}: {{product.getName()}}
+                        </option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -33,7 +37,7 @@
                         v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount">
                 </div>
             </div>
-            <div v-if="soldProduct.productId !== 0 ">
+            <div v-if="productsHash.get(soldProduct.productId)">
                 <p> Precio {{productsHash.get(soldProduct.productId).getPrice()}}
                 </p>
                 <p> Precio Total {{productTotalPrice(productsHash.get(soldProduct.productId).getPrice(),soldProduct.amount)}}
