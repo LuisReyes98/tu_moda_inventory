@@ -18,10 +18,10 @@
             Agregar producto
         </button>
         <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.frontendKey" >
-            <div class="">
-                <div class="form-group">
-                    <label for="">Producto</label>
-                    <select class="custom-select col-md-5 m-1" v-model="soldProduct.productId"
+            <div class="form-inline">
+                <div class="form-group form-inline">
+                    <label class="col-form-label" for="">Producto</label>
+                    <select class="custom-select m-1" v-model="soldProduct.productId"
                         v-bind:class="soldProduct.productId == 0 ? 'is-invalid' : 'is-valid'">
                         <option value="0">
                             Escoge un Producto
@@ -31,26 +31,32 @@
                         </option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
-                    <input class="form-control col-md-5 m-1" v-model="soldProduct.amount"
+                <div class="form-group form-inline">
+                    <label class="col-form-label" v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
+                    <input class="form-control m-1" v-model="soldProduct.amount"
                         v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount">
                 </div>
             </div>
             <div v-if="productsHash.get(soldProduct.productId)">
-                <p> Precio {{productsHash.get(soldProduct.productId).getPrice()}}
+                <p> <strong>Precio</strong> {{productsHash.get(soldProduct.productId).getPrice()}}
                 </p>
-                <p> Precio Total {{productTotalPrice(productsHash.get(soldProduct.productId).getPrice(),soldProduct.amount)}}
+                <p> <strong>Precio Total</strong> {{productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount}}
                 </p>
             </div>
+            <button class="btn btn-danger" v-on:click="removeProduct(soldProduct)" >Eliminar</button>
         </div>
 
         <h2>
-            Total Price: {{sale.getTotalPrice()}}
+            Total Price: {{totalPrice()}}
         </h2>
+        <button class="btn btn-primary" v-on:click="createSale">
+            Crear Compra
+        </button>
+        
     </div>
 
     <script src="../../assets/javascript/vue.js"></script>
+    <script src="../../assets/javascript/vue_components.js"></script>
     <script src="form.js"></script>
 
     <script src="../../assets/javascript/jquery.js"></script>

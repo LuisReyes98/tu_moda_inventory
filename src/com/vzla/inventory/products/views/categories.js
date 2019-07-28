@@ -12,13 +12,11 @@ function preload() {
                 JAVA_CONTROLLER.updateCategory(category.id, category.newName);
 
             },
-            deleteCategory: function (id,name) {
-                $("#generic_modal_title").html("Error")
-                $("#generic_modal_body").html(`No se pudo eliminar la categoria <strong>${name}</strong> \n ya que hay productos que pertenecen a ella`);
+            deleteCategory: function (id) {
 
                 if (!JAVA_CONTROLLER.deleteCategory(id)) {
                     $(`#delete${id}`).modal('hide');
-                    $("#generic_modal").modal('show');
+                    $(`#error_delete_${id}`).modal('show');
                 }
             },
             goToProducts: function () {

@@ -3,7 +3,6 @@ package com.vzla.inventory.sales.controller;
 import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
 import com.vzla.inventory.main.Main;
-import com.vzla.inventory.products.models.Category;
 import com.vzla.inventory.products.models.Product;
 import com.vzla.inventory.sales.models.Sale;
 import java.sql.SQLException;
@@ -21,7 +20,6 @@ public class SalesController extends MainController {
     public Sale sale;
     public Object products[];
     public HashMap<Integer, Product> productsHash;
-//    public Object productSalesRelation[];
 
     public SalesController() {
     }
@@ -42,7 +40,6 @@ public class SalesController extends MainController {
             productList = Main.db.productDao.queryForAll();
             products = productList.toArray();
 
-//            productsHash.put(0, new Product(new Category(""), "", 0, 0));
             productList.forEach((pro) -> {
                 productsHash.put(pro.getId(), pro);
             });
@@ -53,6 +50,10 @@ public class SalesController extends MainController {
 
         NavigationController.goToView(
                 "sales_create", true, true);
+    }
+
+    public void createSale() {
+
     }
 
 }

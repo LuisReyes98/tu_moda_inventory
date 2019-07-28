@@ -95,7 +95,8 @@ public class NavigationController implements NavigationInterface {
                 .stateProperty()
                 .addListener((obs, old, neww)
                         -> {
-                    if (neww == Worker.State.SUCCEEDED) {//once the page has loaded
+                    if (neww == Worker.State.SUCCEEDED) {
+                        //Will execute once the page has loaded
                         // Let JavaScript make calls to adder object,
                         // this will execute once the file is loaded
                         JSObject bridge = (JSObject) webEngine.executeScript("window");

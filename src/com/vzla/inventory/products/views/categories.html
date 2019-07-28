@@ -75,12 +75,19 @@
                                         <button type="button" class="btn btn-block btn-secondary"
                                             data-dismiss="modal">Cancelar</button>
                                         <button type="button" class="btn btn-danger"
-                                            v-on:click="deleteCategory(category.getId(),category.getName())">Eliminar</button>
+                                            v-on:click="deleteCategory(category.getId())">Eliminar</button>
                                     </div>
                                 </div>
                             </div>
                         </div> <!-- end delete modal -->
+                        <generic_modal
+                            v-bind:id="'error_delete_' + category.getId()"
+                            title="Error"
+                            v-bind:message="'No se pudo eliminar la categoria <strong>' + category.getName() +
+                                ' </strong> ya que hay productos que pertenecen a ella'"
+                        >
 
+                        </generic_modal>
                         <!-- Start Edit modal -->
                         <div class="modal fade _modal" v-bind:id="'edit' + category.getId()" tabindex="-1" role="dialog"
                             v-bind:aria-labelledby="'edit' + category.getId() + '_title'" aria-hidden="true">
@@ -118,27 +125,6 @@
                 </tr>
             </tbody>
         </table>
-        <!-- Generic Modal -->
-        <div class="modal fade _modal" id="generic_modal" tabindex="-1" role="dialog"
-            aria-labelledby="generic_modal_title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header ">
-                        <h5 class="modal-title modal__title" id="generic_modal_title"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div id="generic_modal_body" class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal"> OK </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end Generic modal -->
-    
         <!-- Start Create modal -->
         <div class="modal fade _modal" id="new_category" tabindex="-1" role="dialog"
             aria-labelledby="new_category_title" aria-hidden="true">
@@ -178,6 +164,7 @@
 </body>
 
 <script src="../../assets/javascript/vue.js"></script>
+<script src="../../assets/javascript/vue_components.js"></script>
 <script src="categories.js"></script>
 
 <script src="../../assets/javascript/jquery.js"></script>
