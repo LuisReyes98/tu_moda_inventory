@@ -1,10 +1,10 @@
 // sales form script
 let app;
 class SoldProduct{
-    constructor(id,frontendKey,product_id,amount){
+    constructor(id,frontendKey,productId,amount){
         this.id = id;
         this.frontendKey = frontendKey;
-        this.productId = product_id;
+        this.productId = productId;
         this.amount = amount;
     }
 
@@ -42,18 +42,29 @@ function preload() {
             },
             createSale: function () {
                 if (this.isProductsClean()) {
-                    
+                    JAVA_CONTROLLER.resetSoldProducts();
+                    this.soldProducts.forEach(function (soldProduct) {
+                        JAVA_CONTROLLER.addSoldProduct(
+                            soldProduct.id,
+                            soldProduct.productId,
+                            soldProduct.amount
+                        );
+                    });
+                    JAVA_CONTROLLER.createSale();
+                }else{
+                    $('#creation_error').modal('show');
                 }
-                JAVA_CONTROLLER.createSale();
+
             },
             isProductsClean: function () {
                 self = this;
-                this.soldProducts.forEach(soldProduct => {
-                    if (!this.productsHash.get(soldProduct.productId)) {
-                        return false;
+                let result = true;
+                this.soldProducts.forEach(function(soldProduct){
+                    if (!self.productsHash.get(soldProduct.productId) || soldProduct.amount <= 0) {
+                        result = false;
                     }
                 });
-                return true;
+                return result;
             }
         },
 

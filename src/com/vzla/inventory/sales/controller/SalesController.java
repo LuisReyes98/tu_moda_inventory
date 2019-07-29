@@ -4,8 +4,12 @@ import com.vzla.inventory.controller.MainController;
 import com.vzla.inventory.controller.NavigationController;
 import com.vzla.inventory.main.Main;
 import com.vzla.inventory.products.models.Product;
+
 import com.vzla.inventory.sales.models.Sale;
+import com.vzla.inventory.sales.models.SoldProduct;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,6 +24,7 @@ public class SalesController extends MainController {
     public Sale sale;
     public Object products[];
     public HashMap<Integer, Product> productsHash;
+    public ArrayList<SoldProduct> saleSoldProducts = new ArrayList<>();
 
     public SalesController() {
     }
@@ -53,7 +58,22 @@ public class SalesController extends MainController {
     }
 
     public void createSale() {
+        System.out.println("Creando venta");
+//        saleSoldProducts.add(new SoldProduct());
+        saleSoldProducts.forEach((sold) -> {
+            System.out.println(productsHash.get(sold.productId).getName());
+            System.out.println(sold.amount);
+        });
 
+    }
+
+    public void resetSoldProducts() {
+        this.saleSoldProducts = new ArrayList<>();
+    }
+
+    public void addSoldProduct(int id, int productId, int amount) {
+        this.saleSoldProducts.add(new SoldProduct(id, productId, amount));
+        System.out.println("agregado producto " + productId);
     }
 
 }
