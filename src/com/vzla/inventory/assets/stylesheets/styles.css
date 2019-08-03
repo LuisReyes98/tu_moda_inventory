@@ -6556,7 +6556,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 .pl-3, .px-3 {
   padding-left: 1rem !important; }
 
-.p-4, #tu_moda_app {
+.p-4 {
   padding: 1.5rem !important; }
 
 .pt-4, .py-4 {
@@ -19618,6 +19618,24 @@ a.text-dark:focus, a.text-dark:hover {
 
 .background__white {
   background-color: #FFF; }
+
+#tu_moda_app {
+  display: flex;
+  background-color: #f1f1f1;
+  height: 100vh;
+  overflow-y: scroll; }
+
+.navigation__main {
+  width: 64px;
+  position: relative; }
+  .navigation__main .navigation__contents {
+    top: 16px;
+    position: sticky;
+    position: -webkit-sticky; }
+
+.content {
+  flex: 1;
+  padding: 4px; }
 
 .pointer {
   cursor: pointer; }

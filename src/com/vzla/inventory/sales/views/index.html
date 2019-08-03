@@ -11,14 +11,20 @@
 
 <body>
     <div id="tu_moda_app">
-        <h2>Ventas </h2>
-        <button v-on:click="goToIndex()">Volver a inicio</button>
 
-        <button v-on:click="viewSalesCreate()">Registrar Venta</button>
+        <navigation_bar></navigation_bar>
+        <div class="content">
+            <h2>Ventas </h2>
+            <button v-on:click="goToIndex()">Volver a inicio</button>
+            <button v-on:click="viewSalesCreate()">Registrar Venta</button>
+
+        </div>
     </div>
 </body>
 
 <script src="../../assets/javascript/vue.js"></script>
+<script src="../../assets/javascript/vue_components.js"></script>
+
 <script src="index.js"></script>
 
 <script src="../../assets/javascript/jquery.js"></script>

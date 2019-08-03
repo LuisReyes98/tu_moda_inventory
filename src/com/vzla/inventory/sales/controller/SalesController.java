@@ -58,11 +58,11 @@ public class SalesController extends MainController {
     }
 
     public void createSale() {
-        System.out.println("Creando venta");
+//        System.out.println("Creando venta");
 //        saleSoldProducts.add(new SoldProduct());
         saleSoldProducts.forEach((sold) -> {
-            System.out.println(productsHash.get(sold.productId).getName());
-            System.out.println(sold.amount);
+//            System.out.println(productsHash.get(sold.productId).getName());
+//            System.out.println(sold.amount);
         });
 
     }
@@ -73,7 +73,6 @@ public class SalesController extends MainController {
 
     public void addSoldProduct(int id, int productId, int amount) {
         this.saleSoldProducts.add(new SoldProduct(id, productId, amount));
-        System.out.println("agregado producto " + productId);
     }
 
 }

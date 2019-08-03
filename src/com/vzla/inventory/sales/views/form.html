@@ -10,57 +10,63 @@
 </head>
 <body>
     <div id="tu_moda_app">
-        <h2> Formulario Ventas </h2>
-        <button v-on:click="viewSales()">
-            Volver
-        </button>
-        <button v-on:click="addProduct">
-            Agregar producto
-        </button>
-        <form action="">
-            <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.frontendKey" >
-                <div class="form-inline">
-                    <div class="form-group form-inline">
-                        <label class="col-form-label" for="">Producto</label>
-                        <select class="custom-select m-1" v-model="soldProduct.productId"
-                            v-bind:class="soldProduct.productId == 0 ? 'is-invalid' : 'is-valid'">
-                            <option value="0">
-                                Escoge un Producto
-                            </option>
-                            <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
-                                {{product.getCategory().getName()}}: {{product.getName()}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group form-inline">
-                        <label class="col-form-label" v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
-                        <input class="form-control m-1" v-model="soldProduct.amount"
-                            v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount"
-                            v-bind:class="soldProduct.amount <= 0 ? 'is-invalid' : 'is-valid'">
-                    </div>
-                </div>
-                <div v-if="productsHash.get(soldProduct.productId)">
-                    <p> <strong>Precio</strong> {{productsHash.get(soldProduct.productId).getPrice()}}
-                    </p>
-                    <p> <strong>Precio Total</strong> {{productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount}}
-                    </p>
-                </div>
-                <button class="btn btn-danger" v-on:click="removeProduct(soldProduct)" >Eliminar</button>
-            </div>
 
-            <h2>
-                Total Price: {{totalPrice()}}
-            </h2>
-            <button class="btn btn-primary" v-on:click="createSale">
-                Crear Compra
+        <navigation_bar></navigation_bar>
+
+        <div class="content">
+
+            <h2> Formulario Ventas </h2>
+            <button v-on:click="viewSales()">
+                Volver
             </button>
-        </form>
-        <generic_modal
-            id="creation_error"
-            title="Error"
-            message="Hay productos con errores"
-        >
-        </generic_modal>
+            <button v-on:click="addProduct">
+                Agregar producto
+            </button>
+            <form action="">
+                <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.frontendKey" >
+                    <div class="form-inline">
+                        <div class="form-group form-inline">
+                            <label class="col-form-label" for="">Producto</label>
+                            <select class="custom-select m-1" v-model="soldProduct.productId"
+                                v-bind:class="soldProduct.productId == 0 ? 'is-invalid' : 'is-valid'">
+                                <option value="0">
+                                    Escoge un Producto
+                                </option>
+                                <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
+                                    {{product.getCategory().getName()}}: {{product.getName()}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group form-inline">
+                            <label class="col-form-label" v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
+                            <input class="form-control m-1" v-model="soldProduct.amount"
+                                v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount"
+                                v-bind:class="soldProduct.amount <= 0 ? 'is-invalid' : 'is-valid'">
+                        </div>
+                    </div>
+                    <div v-if="productsHash.get(soldProduct.productId)">
+                        <p> <strong>Precio</strong> {{productsHash.get(soldProduct.productId).getPrice()}}
+                        </p>
+                        <p> <strong>Precio Total</strong> {{productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount}}
+                        </p>
+                    </div>
+                    <button class="btn btn-danger" v-on:click="removeProduct(soldProduct)" >Eliminar</button>
+                </div>
+    
+                <h2>
+                    Total Price: {{totalPrice()}}
+                </h2>
+                <button class="btn btn-primary" v-on:click="createSale">
+                    Crear Compra
+                </button>
+            </form>
+            <generic_modal
+                id="creation_error"
+                title="Error"
+                message="Hay productos con errores"
+            >
+            </generic_modal>
+        </div>
     </div>
 
     <script src="../../assets/javascript/vue.js"></script>

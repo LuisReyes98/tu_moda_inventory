@@ -50,14 +50,14 @@ function preload() {
                             soldProduct.amount
                         );
                     });
-                    JAVA_CONTROLLER.createSale();
+                    JAVA_CONTROLLER.createSale(this.totalPrice());
                 }else{
                     $('#creation_error').modal('show');
                 }
 
             },
             isProductsClean: function () {
-                self = this;
+                let self = this;
                 let result = true;
                 this.soldProducts.forEach(function(soldProduct){
                     if (!self.productsHash.get(soldProduct.productId) || soldProduct.amount <= 0) {

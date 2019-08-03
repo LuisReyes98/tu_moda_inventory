@@ -1,6 +1,46 @@
-Vue.component('blog_post', {
-    props: ['title'],
-    template: '<h3>{{ title }}</h3>'
+Vue.component('navigation_bar', {
+    template: `
+        <nav class="navigation__main bg-dark align-self-stretch">
+            <div class="navigation__contents d-flex justify-content-center flex flex-column ">
+                <button class="btn bg-transparent" data-tooltip="tooltip" data-placement="right" title="Cambiar menu">
+                    <i class="mdi mdi-36px text-white mdi-menu "></i>
+                </button>
+                <button class="btn bg-transparent" v-on:click="goToIndex" data-tooltip="tooltip" data-placement="right"
+                    title="Inicio">
+                    <i class="mdi mdi-36px text-white mdi-home"
+                    ></i>
+                </button>
+                <button class="btn bg-transparent" v-on:click="goToProducts" data-tooltip="tooltip" data-placement="right"
+                    title="Productos">
+                    <i class="mdi mdi-36px text-white mdi-cube"
+                    ></i>
+                </button>
+                <button class="btn bg-transparent" data-tooltip="tooltip" data-placement="right" title="Categorias"
+                    v-on:click="goToCategories">
+                    <i class="mdi mdi-36px text-white mdi-format-list-bulleted-square" ></i>
+                </button>
+                <button class="btn bg-transparent" data-tooltip="tooltip" data-placement="right" title="Ventas"
+                    v-on:click="goToSales">
+                    <i class="mdi mdi-36px text-white mdi-cart"
+                        ></i>
+                </button>
+            </div>
+        </nav>
+    `,
+    methods: {
+        goToProducts: function () {
+            JAVA_CONTROLLER.goToProducts();
+        },
+        goToSales: function () {
+            JAVA_CONTROLLER.goToSales();
+        },
+        goToCategories: function () {
+            JAVA_CONTROLLER.goToCategories();
+        },
+        goToIndex: function () {
+            JAVA_CONTROLLER.goToIndex();
+        }
+    },
 })
 
 

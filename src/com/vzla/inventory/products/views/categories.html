@@ -11,154 +11,160 @@
 
 <body>
     <div id="tu_moda_app">
-        <h2>Categorias</h2>
+        <navigation_bar></navigation_bar>
 
-        <button v-on:click="goToProducts">Volver</button>
-        <button
-            data-toggle="modal"
-            data-target="#new_category"
-            class="btn btn-success">
-            Crear Categoria
-        </button>
-        <table class="table table-hover table-striped mt-2 _table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="category in categories" v-bind:key="category.getId()">
-                    <td>{{category.getName()}}</td>
-                    <td>
-                        <!-- delete category -->
-                        <i
-                            class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
-                            data-placement="top"
-                            title="Eliminar"
-                            data-toggle="modal"
-                            v-bind:data-target="'#delete' + category.getId()"
-                            ></i>
-                        <!-- Edit button -->
-                        <i
-                            class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
-                            data-toggle="modal"
-                            v-bind:data-target="'#edit' + category.getId()"
-                            data-placement="top"
-                            title="Editar"
-                            ></i>
+        <div class="content">
 
-                        <!-- Modal delete item -->
-                        <div
-                            class="modal fade _modal"
-                            v-bind:id="'delete' + category.getId()"
-                            tabindex="-1"
-                            role="dialog"
-                            v-bind:aria-labelledby="'delete' + category.getId() + '_title'" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title modal__title text-danger"
-                                            v-bind:id="'delete' + category.getId() + '_title'">
-                                            Atención! </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>¿Estas seguro de eliminar este categoria? ,<strong>Esta acción no se puede deshacer</strong></p>
-                                        <p><strong>Nombre:</strong>
-                                            {{category.getName()}}</p>
+            <h2>Categorias</h2>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-block btn-secondary"
-                                            data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger"
-                                            v-on:click="deleteCategory(category.getId())">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end delete modal -->
-                        <generic_modal
-                            v-bind:id="'error_delete_' + category.getId()"
-                            title="Error"
-                            v-bind:message="'No se pudo eliminar la categoria <strong>' + category.getName() +
-                                ' </strong> ya que hay productos que pertenecen a ella'"
-                        >
-
-                        </generic_modal>
-                        <!-- Start Edit modal -->
-                        <div class="modal fade _modal" v-bind:id="'edit' + category.getId()" tabindex="-1" role="dialog"
-                            v-bind:aria-labelledby="'edit' + category.getId() + '_title'" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title modal__title"
-                                            v-bind:id="'edit' + category.getId() + '_title'">
-                                            Editando Categoria </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group col-md-12">
-                                            <label v-bind:for="'category_name_'+ category.getId()">Nombre</label>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                v-bind:id="'category_name_'+ category.getId()"
-                                                placeholder="Nombre"
-                                                v-model="category.newName">
+            <button v-on:click="goToProducts">Volver</button>
+            <button
+                data-toggle="modal"
+                data-target="#new_category"
+                class="btn btn-success">
+                Crear Categoria
+            </button>
+            <table class="table table-hover table-striped mt-2 _table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="category in categories" v-bind:key="category.getId()">
+                        <td>{{category.getName()}}</td>
+                        <td>
+                            <!-- delete category -->
+                            <i
+                                class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
+                                data-placement="top"
+                                title="Eliminar"
+                                data-toggle="modal"
+                                v-bind:data-target="'#delete' + category.getId()"
+                                ></i>
+                            <!-- Edit button -->
+                            <i
+                                class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
+                                data-toggle="modal"
+                                v-bind:data-target="'#edit' + category.getId()"
+                                data-placement="top"
+                                title="Editar"
+                                ></i>
+    
+                            <!-- Modal delete item -->
+                            <div
+                                class="modal fade _modal"
+                                v-bind:id="'delete' + category.getId()"
+                                tabindex="-1"
+                                role="dialog"
+                                v-bind:aria-labelledby="'delete' + category.getId() + '_title'" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title modal__title text-danger"
+                                                v-bind:id="'delete' + category.getId() + '_title'">
+                                                Atención! </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿Estas seguro de eliminar este categoria? ,<strong>Esta acción no se puede deshacer</strong></p>
+                                            <p><strong>Nombre:</strong>
+                                                {{category.getName()}}</p>
+    
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-block btn-secondary"
+                                                data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-danger"
+                                                v-on:click="deleteCategory(category.getId())">Eliminar</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-success"
-                                            v-on:click="editCategory(category)">Guardar</button>
+                                </div>
+                            </div> <!-- end delete modal -->
+                            <generic_modal
+                                v-bind:id="'error_delete_' + category.getId()"
+                                title="Error"
+                                v-bind:message="'No se pudo eliminar la categoria <strong>' + category.getName() +
+                                    ' </strong> ya que hay productos que pertenecen a ella'"
+                            >
+    
+                            </generic_modal>
+                            <!-- Start Edit modal -->
+                            <div class="modal fade _modal" v-bind:id="'edit' + category.getId()" tabindex="-1" role="dialog"
+                                v-bind:aria-labelledby="'edit' + category.getId() + '_title'" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title modal__title"
+                                                v-bind:id="'edit' + category.getId() + '_title'">
+                                                Editando Categoria </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group col-md-12">
+                                                <label v-bind:for="'category_name_'+ category.getId()">Nombre</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    v-bind:id="'category_name_'+ category.getId()"
+                                                    placeholder="Nombre"
+                                                    v-model="category.newName">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-success"
+                                                v-on:click="editCategory(category)">Guardar</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> 
-                        <!-- End Edit modal-->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- Start Create modal -->
-        <div class="modal fade _modal" id="new_category" tabindex="-1" role="dialog"
-            aria-labelledby="new_category_title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title modal__title" id="new_category_title">
-                            Nueva Categoria </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group col-md-12">
-                            <label for="new_category_name">
-                                Nombre
-                            </label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="category_name"
-                                id="new_category_name"
-                                placeholder="Nombre" >
+                            </div> 
+                            <!-- End Edit modal-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Start Create modal -->
+            <div class="modal fade _modal" id="new_category" tabindex="-1" role="dialog"
+                aria-labelledby="new_category_title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modal__title" id="new_category_title">
+                                Nueva Categoria </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success"
-                            v-on:click="createCategory">Guardar</button>
+                        <div class="modal-body">
+                            <div class="form-group col-md-12">
+                                <label for="new_category_name">
+                                    Nombre
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    v-model="category_name"
+                                    id="new_category_name"
+                                    placeholder="Nombre" >
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-success"
+                                v-on:click="createCategory">Guardar</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- End Create modal-->
+
         </div>
-        <!-- End Create modal-->
     </div>
 
 </body>

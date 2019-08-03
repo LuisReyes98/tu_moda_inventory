@@ -9,87 +9,95 @@
 </head>
 <body>
     <div id="tu_moda_app">
-        <h2>Productos</h2>
+        <navigation_bar></navigation_bar>
 
-        <button v-on:click="goToIndex">Volver a inicio</button>
-        <button class="btn btn-success" v-on:click="viewProductCreate">
-            Crear Producto
-        </button>
-        <button v-on:click="goToCategories">
-            Categorias
-        </button>
-        <table class="table table-hover table-striped mt-2 _table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Categoria </th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Inventario </th>
-                    <th scope="col">Precio </th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="product in products" v-bind:key="product.getId()">
-                    <td>{{product.getCategory().getName()}}</td>
-                    <td>{{product.getName()}}</td>
-                    <td>{{product.getStock()}}</td>
-                    <td>{{product.getPrice() | decimal }}</td>
-                    <td>
-                        <!-- delete product -->
-                        <i
-                            class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
-                            data-placement="top"
-                            title="Eliminar"
-                            data-toggle="modal" v-bind:data-target="'#delete' + product.getId()"
-                            ></i>
-                            <!-- Edit button -->
-                        <i
-                            class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
-                            data-placement="top"
-                            title="Editar"
-                            v-on:click="editProduct(product.getId())"
-                            ></i>
-
-                        <!-- Modal delete item -->
-                        <div
-                            class="modal fade _modal"
-                            v-bind:id="'delete' + product.getId()"
-                            tabindex="-1"
-                            role="dialog"
-                            v-bind:aria-labelledby="'delete' + product.getId() + '_title'" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title modal__title text-danger"
-                                            v-bind:id="'delete' + product.getId() + '_title'"> Atención! </h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>¿Estas seguro de eliminar este producto? ,<strong>Esta acción no se puede deshacer</strong></p>
-                                        <p> <strong>Categoria:</strong> {{product.getCategory().getName()}}</p>
-                                        <p> <strong>Nombre:</strong> {{product.getName()}}</p>
-                                        <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
-                                        <p> <strong>Precio:</strong> {{product.getPrice() | decimal }}</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-block btn-secondary"
-                                            data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" v-on:click="deleteProduct(product.getId())" >Eliminar</button>
+        <div class="content">
+            
+            <h2>Productos</h2>
+    
+            <button v-on:click="goToIndex">Volver a inicio</button>
+            <button class="btn btn-success" v-on:click="viewProductCreate">
+                Crear Producto
+            </button>
+            <button v-on:click="goToCategories">
+                Categorias
+            </button>
+            <table class="table table-hover table-striped mt-2 _table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Categoria </th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Inventario </th>
+                        <th scope="col">Precio </th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in products" v-bind:key="product.getId()">
+                        <td>{{product.getCategory().getName()}}</td>
+                        <td>{{product.getName()}}</td>
+                        <td>{{product.getStock()}}</td>
+                        <td>{{product.getPrice() | decimal }}</td>
+                        <td>
+                            <!-- delete product -->
+                            <i
+                                class="mdi mdi-trash-can text-danger table__action_icon" data-tooltip="tooltip"
+                                data-placement="top"
+                                title="Eliminar"
+                                data-toggle="modal" v-bind:data-target="'#delete' + product.getId()"
+                                ></i>
+                                <!-- Edit button -->
+                            <i
+                                class="mdi mdi-lead-pencil text-warning table__action_icon" data-tooltip="tooltip"
+                                data-placement="top"
+                                title="Editar"
+                                v-on:click="editProduct(product.getId())"
+                                ></i>
+    
+                            <!-- Modal delete item -->
+                            <div
+                                class="modal fade _modal"
+                                v-bind:id="'delete' + product.getId()"
+                                tabindex="-1"
+                                role="dialog"
+                                v-bind:aria-labelledby="'delete' + product.getId() + '_title'" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title modal__title text-danger"
+                                                v-bind:id="'delete' + product.getId() + '_title'"> Atención! </h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿Estas seguro de eliminar este producto? ,<strong>Esta acción no se puede deshacer</strong></p>
+                                            <p> <strong>Categoria:</strong> {{product.getCategory().getName()}}</p>
+                                            <p> <strong>Nombre:</strong> {{product.getName()}}</p>
+                                            <p> <strong>Inventario:</strong> {{product.getStock()}}</p>
+                                            <p> <strong>Precio:</strong> {{product.getPrice() | decimal }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-block btn-secondary"
+                                                data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-danger" v-on:click="deleteProduct(product.getId())" >Eliminar</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> <!-- end delete modal -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            </div> <!-- end delete modal -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 
 </body>
 
 <script src="../../assets/javascript/vue.js"></script>
+<script src="../../assets/javascript/vue_components.js"></script>
 <script src="index.js"></script>
 
 <script src="../../assets/javascript/jquery.js" ></script>
