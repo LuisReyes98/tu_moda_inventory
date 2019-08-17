@@ -16,8 +16,9 @@ function preload() {
         data: {
             sale: JAVA_CONTROLLER.sale,
             products: JAVA_CONTROLLER.products,
+            referenced_products: Array.from(JAVA_CONTROLLER.products),
             frontendKey: 2,
-            soldProducts: [new SoldProduct(0, 1, 0, 1)],
+            soldProducts: [],
             productsHash: JAVA_CONTROLLER.productsHash,
         },
         methods: {

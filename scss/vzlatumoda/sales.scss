@@ -1,0 +1,29 @@
+.sales{
+    .card__product{
+        background-color: white;
+        border-radius: .5rem;
+        width: 10rem;
+        height: 12rem;
+        position: relative;
+        border: 1px solid #141414;
+        
+        .card__product--image{
+            background-color: #DFDCFD;
+            width: 100%;
+            height: 50%;
+        }
+
+        .card__product--category{
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card__product--name{
+            position: absolute;
+            top:0;
+            right:0;
+        }
+
+    }
+
+}

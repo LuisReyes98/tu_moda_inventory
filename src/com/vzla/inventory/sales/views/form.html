@@ -14,52 +14,41 @@
         <navigation_bar></navigation_bar>
 
         <div class="content">
+            <div class="container-fluid sales">
+                <div class="col-8">
+                    <div class="bg-secondary text__black col-12">
+                        <h2>Registrar Venta</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="col-12 " >
+                            <p>Buscar</p> <input type="text">
+                        </div>
+                        <div class="d-flex">
+                            <div class="card__product" v-for="(product, index) in referenced_products" :key="index">
+                                <div class="card__product--image">
+                                </div>
+                                <p class="card__product--category">
+                                    {{product.getCategory().getName()}}
+                                </p>
+                                <p class="card__product--name">
+                                    {{product.getName()}}
+                                </p>
+                                <i class="mdi mdi-plus-circle card__product--button_add text-success">
+                                </i>
+                            </div>
+                        </div>
 
-            <h2> Formulario Ventas </h2>
-            <button v-on:click="viewSales()">
-                Volver
-            </button>
-            <button v-on:click="addProduct">
-                Agregar producto
-            </button>
-            <form action="">
-                <div class="border border-dark p-4 m-2" v-for=" soldProduct in soldProducts " v-bind:key="soldProduct.frontendKey" >
-                    <div class="form-inline">
-                        <div class="form-group form-inline">
-                            <label class="col-form-label" for="">Producto</label>
-                            <select class="custom-select m-1" v-model="soldProduct.productId"
-                                v-bind:class="soldProduct.productId == 0 ? 'is-invalid' : 'is-valid'">
-                                <option value="0">
-                                    Escoge un Producto
-                                </option>
-                                <option v-for="product in products" v-bind:value="product.getId()" v-bind:key="product.getId()">
-                                    {{product.getCategory().getName()}}: {{product.getName()}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group form-inline">
-                            <label class="col-form-label" v-bind:for="'amount_' + soldProduct.frontendKey">Cantidad</label>
-                            <input class="form-control m-1" v-model="soldProduct.amount"
-                                v-bind:id="'amount_' + soldProduct.frontendKey" type="number" name="amount"
-                                v-bind:class="soldProduct.amount <= 0 ? 'is-invalid' : 'is-valid'">
-                        </div>
                     </div>
-                    <div v-if="productsHash.get(soldProduct.productId)">
-                        <p> <strong>Precio</strong> {{productsHash.get(soldProduct.productId).getPrice()}}
-                        </p>
-                        <p> <strong>Precio Total</strong> {{productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount}}
-                        </p>
-                    </div>
-                    <button class="btn btn-danger" v-on:click="removeProduct(soldProduct)" >Eliminar</button>
+
+
                 </div>
-    
-                <h2>
-                    Total Price: {{totalPrice()}}
-                </h2>
-                <button class="btn btn-primary" v-on:click="createSale">
-                    Crear Compra
-                </button>
-            </form>
+                <div class="col-4 bg-dark">
+
+
+                </div>
+
+
+            </div>
             <generic_modal
                 id="creation_error"
                 title="Error"
