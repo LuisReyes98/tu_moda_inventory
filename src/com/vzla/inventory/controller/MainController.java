@@ -1,6 +1,8 @@
 package com.vzla.inventory.controller;
 
 import com.vzla.inventory.main.Main;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Parent class of all view
@@ -47,4 +49,14 @@ public class MainController {
 
     }
 
+    /**
+     * Get the date
+     *
+     * @param format
+     * @return
+     */
+    public String getCurrentDateStr(String format) {
+        //"dd/MM/yyyy HH:mm"
+        return new SimpleDateFormat(format).format(new Date());
+    }
 }

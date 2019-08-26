@@ -51,7 +51,4 @@ function load() {
         app.categories.push(new Category(el.getId(),el.getName()));
     });
 
-    $(function () {
-        $('[data-tooltip="tooltip"]').tooltip();
-    });
 }

@@ -5236,10 +5236,10 @@ a.bg-danger:focus, a.bg-danger:hover, button.bg-danger:focus, button.bg-danger:h
 a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
   background-color: #dae0e5 !important; }
 
-.bg-dark {
+.bg-dark, .navigation__main {
   background-color: #343a40 !important; }
 
-a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
+a.bg-dark:focus, a.navigation__main:focus, a.bg-dark:hover, a.navigation__main:hover, button.bg-dark:focus, button.navigation__main:focus, button.bg-dark:hover, button.navigation__main:hover {
   background-color: #1d2124 !important; }
 
 .bg-white {

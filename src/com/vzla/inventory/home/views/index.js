@@ -5,9 +5,7 @@ function preload() {
 }
 
 function load() {
-    $(function () {
-        $('[data-tooltip="tooltip"]').tooltip();
-    });
+    
 }
 
 

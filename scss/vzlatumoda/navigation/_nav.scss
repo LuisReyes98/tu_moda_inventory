@@ -10,6 +10,7 @@ $nav_width: 64px;
 .navigation__main{
     width: $nav_width;
     position: relative;
+    @extend .bg-dark ;
 
     .navigation__contents{
         top: 16px;

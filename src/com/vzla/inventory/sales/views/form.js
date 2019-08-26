@@ -20,13 +20,11 @@ function preload() {
             frontendKey: 2,
             soldProducts: [],
             productsHash: JAVA_CONTROLLER.productsHash,
+            todayDate: JAVA_CONTROLLER.getCurrentDateStr("dd-MMMMM-yyyy hh:mm a"),
         },
         methods: {
-            viewSales: function () {
-                JAVA_CONTROLLER.viewSales();
-            },
-            addProduct: function () {
-                this.soldProducts.push(new SoldProduct(0,this.frontendKey++,0,1,));
+            addProduct: function (product) {
+                
             },
             removeProduct: function (soldProduct){
                 this.soldProducts.splice(this.soldProducts.indexOf(soldProduct) ,1);

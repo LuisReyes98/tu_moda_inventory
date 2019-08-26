@@ -131,6 +131,10 @@ public class NavigationController implements NavigationInterface {
 
                         }
 
+                        webEngine.executeScript("$(function () {\n"
+                                + "        $('[data-tooltip=\"tooltip\"]').tooltip();\n"
+                                + "    });");
+
                     }
                 });
 

@@ -15,7 +15,7 @@
 
         <div class="content sales grid_container columns-5">
                 <div class="column-fill-3 bg-white">
-                    <div class="text__black col-12">
+                    <div class="text__black col-12 p-4 text-center">
                         <h2>Registrar Venta</h2>
                     </div>
                     <div class="col-12">
@@ -44,8 +44,27 @@
     
                     </div>
                 </div>
-                <div class="column-fill-2 bg-light">
-                    Lorem
+                <div class="column-fill-2 bg-light  d-flex flex-column">
+                    <h4 class="text-center p-4">{{todayDate}}</h4>
+                    <form action="">
+                        <div class="form-group">
+                            <label class="col-4" for="client">Cliente:</label>
+                            <input class="col-7" id="client" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-4" for="cedula">Cedula:</label>
+                            <input class="col-7" id="cedula" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-4" for="telephone">Telefono:</label>
+                            <input class="col-7" id="telephone" type="text" class="form-control">
+                        </div>
+                    </form>
+                    <div class="border border-dark flex-grow-1">
+                        <div v-for="(prod, index) in soldProducts" :key="index">
+
+                        </div>
+                    </div>
                 </div>
 
 

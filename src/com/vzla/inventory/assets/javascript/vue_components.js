@@ -1,6 +1,6 @@
 Vue.component('navigation_bar', {
     template: `
-        <nav class="navigation__main bg-dark align-self-stretch">
+        <nav class="navigation__main align-self-stretch">
             <div class="navigation__contents d-flex justify-content-center flex flex-column ">
                 <button class="btn bg-transparent" data-tooltip="tooltip" data-placement="right" title="Cambiar menu">
                     <i class="mdi mdi-36px text-white mdi-menu "></i>
