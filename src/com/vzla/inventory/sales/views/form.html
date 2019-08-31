@@ -23,10 +23,10 @@
                             <input class="form-control" type="text" placeholder="Buscar">
                         </div>
                         <div class="d-flex flex-wrap">
-                            <div class="
-                                card card__product
-                                m-1 mt-4 mr-2"
-                                v-for="(product, index) in referenced_products" :key="index">
+                            <div
+                                v-for="(product, index) in referencedProducts" :key="index"
+                                class="card card__product m-1 mt-4 mr-2 shadow"
+                            >
                                 <div class="card-img-top bg-dark d-flex justify-content-center">
                                     <i class="mdi mdi-tshirt-crew mdi-48px text-white"></i>
                                 </div>
@@ -37,14 +37,14 @@
                                     <b>Nombre:</b> {{product.getName()}}
                                 </p>
 
-                                <i class="mdi mdi-plus-circle card__product--button_add mdi-36px text-success">
+                                <i class="mdi mdi-plus-circle card__product--button_add mdi-36px text-success" v-on:click="addProductToSale(product)" >
                                 </i>
                             </div>
                         </div>
     
                     </div>
                 </div>
-                <div class="column-fill-2 bg-light  d-flex flex-column">
+                <div class="column-fill-2 bg-light shadow d-flex flex-column">
                     <h4 class="text-center p-4">{{todayDate}}</h4>
                     <form action="">
                         <div class="form-group">
@@ -59,12 +59,25 @@
                             <label class="col-4" for="telephone">Telefono:</label>
                             <input class="col-7" id="telephone" type="text" class="form-control">
                         </div>
-                    </form>
-                    <div class="border border-dark flex-grow-1">
-                        <div v-for="(prod, index) in soldProducts" :key="index">
 
+                        <div class="border border__gray_dark flex-grow-1">
+                            <button v-on:click="resetProducts()">Remover Todos los Productos</button>
+                            <div class="sold_product border border__gray_regular p-1" v-for="(prod, index) in soldProducts" :key="index">
+                                <div>
+                                    <p>{{prod.getCategory().getName()}}</p>
+                                    <p>{{prod.getName()}}</p>
+                                </div>
+                                <div>
+                                    <input type="number" name="" id="" >
+                                    <button>Mas</button>
+                                    <button>Menos</button>
+                                </div>
+                                <i class="sold_product__icon mdi mdi-trash-can text-danger" data-tooltip="tooltip"
+                                data-placement="top" title="Eliminar" v-on:click="removeProductFromSale(prod)" ></i>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
 
 

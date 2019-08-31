@@ -16,18 +16,35 @@ function preload() {
         data: {
             sale: JAVA_CONTROLLER.sale,
             products: JAVA_CONTROLLER.products,
-            referenced_products: Array.from(JAVA_CONTROLLER.products),
+            referencedProducts: Array.from(JAVA_CONTROLLER.products),
             frontendKey: 2,
             soldProducts: [],
             productsHash: JAVA_CONTROLLER.productsHash,
             todayDate: JAVA_CONTROLLER.getCurrentDateStr("dd-MMMMM-yyyy hh:mm a"),
         },
         methods: {
-            addProduct: function (product) {
-                
+            addProductToSale: function (product) {
+                console.log(product.getId());
+                if (this.productsHash.get(product.getId()) !== null) {
+                    this.referencedProducts = this.referencedProducts.filter(function (value, index, arr) {
+                        return value !== product;
+                    })
+                    this.soldProducts.push(product);
+                }
             },
-            removeProduct: function (soldProduct){
-                this.soldProducts.splice(this.soldProducts.indexOf(soldProduct) ,1);
+            resetProducts: function () {
+                this.referencedProducts = this.products.slice();
+                this.soldProducts = [];
+            },
+            removeProductFromSale: function (soldProduct){
+                console.log(soldProduct.getId());
+
+                if (this.productsHash.get(soldProduct.getId()) !== null) {
+                    this.soldProducts = this.soldProducts.filter(function (value, index, arr) {
+                        return value !== soldProduct;
+                    })
+                    this.referencedProducts.push(soldProduct);
+                }
             },
             totalPrice: function () {
                 self = this;

@@ -1,7 +1,8 @@
 $project_colors: (
     "black": #000,
     "white": #FFF,
-    
+    "gray_regular":#cbd5e0,
+    "gray_dark": #4a5568,
 
 );
 
@@ -12,5 +13,9 @@ $project_colors: (
 
     .background__#{$name + ""} {
         background-color: $color;
+    }
+
+    .border__#{$name + ""}{
+        border-color: $color;
     }
 }

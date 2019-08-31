@@ -3,12 +3,12 @@ $nav_width: 64px;
 #tu_moda_app{
     display: flex;
     background-color: #f1f1f1;
-    height: 100vh;
     overflow-y: scroll;
 }
 
 .navigation__main{
     width: $nav_width;
+    min-height: 100vh;
     position: relative;
     @extend .bg-dark ;
 

@@ -19613,20 +19613,44 @@ a.text-dark:focus, a.text-dark:hover {
 .background__black {
   background-color: #000; }
 
+.border__black {
+  border-color: #000; }
+
 .text__white {
   color: #FFF; }
 
 .background__white {
   background-color: #FFF; }
 
+.border__white {
+  border-color: #FFF; }
+
+.text__gray_regular {
+  color: #cbd5e0; }
+
+.background__gray_regular {
+  background-color: #cbd5e0; }
+
+.border__gray_regular {
+  border-color: #cbd5e0; }
+
+.text__gray_dark {
+  color: #4a5568; }
+
+.background__gray_dark {
+  background-color: #4a5568; }
+
+.border__gray_dark {
+  border-color: #4a5568; }
+
 #tu_moda_app {
   display: flex;
   background-color: #f1f1f1;
-  height: 100vh;
   overflow-y: scroll; }
 
 .navigation__main {
   width: 64px;
+  min-height: 100vh;
   position: relative; }
   .navigation__main .navigation__contents {
     top: 16px;
@@ -19646,6 +19670,12 @@ a.text-dark:focus, a.text-dark:hover {
     right: -10px;
     z-index: 2;
     cursor: pointer; }
+.sales .sold_product {
+  position: relative; }
+  .sales .sold_product .sold_product__icon {
+    position: absolute;
+    top: 5px;
+    right: 5px; }
 
 .pointer {
   cursor: pointer; }
