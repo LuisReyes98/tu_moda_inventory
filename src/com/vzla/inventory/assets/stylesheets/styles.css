@@ -19676,6 +19676,11 @@ a.text-dark:focus, a.text-dark:hover {
     position: absolute;
     top: 5px;
     right: 5px; }
+  .sales .sold_product .input__number {
+    width: 50px; }
+
+.cursor__pointer {
+  cursor: pointer; }
 
 .pointer {
   cursor: pointer; }

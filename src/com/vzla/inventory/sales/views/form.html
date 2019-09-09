@@ -61,19 +61,49 @@
                         </div>
 
                         <div class="border border__gray_dark flex-grow-1">
-                            <button v-on:click="resetProducts()">Remover Todos los Productos</button>
-                            <div class="sold_product border border__gray_regular p-1" v-for="(prod, index) in soldProducts" :key="index">
-                                <div>
-                                    <p>{{prod.getCategory().getName()}}</p>
-                                    <p>{{prod.getName()}}</p>
+                            <button @click="resetProducts">
+                                Remover Todos los Productos
+                            </button>
+                            <div v-for="(prod, index) in soldProducts" :key="index" class="sold_product border-bottom border__gray_regular p-1 mr-2">
+                                <div class="m-2 mt-4">
+                                    <p class="h4 text-body font-weight-bold" >{{prod.product.getCategory().getName()}}</p>
                                 </div>
-                                <div>
-                                    <input type="number" name="" id="" >
-                                    <button>Mas</button>
-                                    <button>Menos</button>
+                                <div class="d-flex m-2 align-items-center justify-content-start">
+                                    <p class="text-secondary font-weight-bold" >
+                                        {{prod.product.getName()}}
+                                    </p>
+                                    <div class="d-flex align-items-center justify-content-center p-2">
+                                        <button class="btn bg-transparent"
+                                            @click="increaseProductAmount(prod)" >
+                                            <i class="mdi mdi-plus-circle mdi-24px text-dark">
+                                            </i>
+                                        </button>
+                                        <input
+                                            class="input__number form-control"
+                                            v-model="prod.amount"
+                                            min="1"
+                                            type="number"
+                                            name="amount"
+                                            data-tooltip="tooltip"
+                                            data-placement="top"
+                                            title="Cantidad"
+                                        >
+                                        <button class="btn bg-transparent"
+                                            @click="decreaseProductAmount(prod)" >
+                                            <i class="mdi mdi-minus-circle mdi-24px text-dark"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <i class="sold_product__icon mdi mdi-trash-can text-danger" data-tooltip="tooltip"
-                                data-placement="top" title="Eliminar" v-on:click="removeProductFromSale(prod)" ></i>
+                                <button
+                                    class="sold_product__icon btn bg-transparent"
+                                    data-tooltip="tooltip"
+                                    data-placement="left"
+                                    title="Eliminar"
+                                >
+                                    <i
+                                        class=" mdi mdi-trash-can text-danger mdi-24px"
+                                        v-on:click="removeProductFromSale(prod)" ></i>
+                                </button>
                             </div>
                         </div>
                     </form>

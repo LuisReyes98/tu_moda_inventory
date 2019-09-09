@@ -6,6 +6,7 @@
 
 ```cmd
 sass --watch styles.scss:..\src\com\vzla\inventory\assets\stylesheets\styles.css
+sass --watch styles.scss:../src/com/vzla/inventory/assets/stylesheets/styles.css
 ```
 
 ## Database

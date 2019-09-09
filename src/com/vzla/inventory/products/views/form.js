@@ -23,14 +23,22 @@ function preload() {
                 if (this.newCategory) {
                     idCat = 0;
                     nameCat = this.categoryNewName;
-                } else{
+                }
+                else{
                     idCat = this.selectedCategory;
                     nameCat = '';
                 }
-                if (this.isEditing) {
-                    JAVA_CONTROLLER.updateProduct(nameCat, idCat, this.name, this.stock, this.price, this.id);
-                }else{
-                    JAVA_CONTROLLER.createProduct(nameCat, idCat, this.name, this.stock, this.price);
+                if (!this.newCategory && this.selectedCategory === 0) {
+                    $('#category_error').modal('show');
+                }
+                else{
+                    if (this.isEditing) {
+                        JAVA_CONTROLLER.updateProduct(nameCat, idCat, this.name, this.stock, this.price, this.id);
+                    }else{
+                        JAVA_CONTROLLER.createProduct(
+                            nameCat, idCat, this.name, this.stock, this.price
+                        )
+                    }
                 }
             },
             goBack: function () {

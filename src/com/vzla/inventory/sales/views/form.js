@@ -1,10 +1,8 @@
 // sales form script
 let app;
 class SoldProduct{
-    constructor(id,frontendKey,productId,amount){
-        this.id = id;
-        this.frontendKey = frontendKey;
-        this.productId = productId;
+    constructor(product, amount){
+        this.product = product;
         this.amount = amount;
     }
 
@@ -24,64 +22,76 @@ function preload() {
         },
         methods: {
             addProductToSale: function (product) {
-                console.log(product.getId());
+                // console.log(product.getId());
                 if (this.productsHash.get(product.getId()) !== null) {
                     this.referencedProducts = this.referencedProducts.filter(function (value, index, arr) {
                         return value !== product;
                     })
-                    this.soldProducts.push(product);
+                    this.soldProducts.push(new SoldProduct(product,1));
                 }
+                $(function () {
+                        $('[data-tooltip="tooltip"]').tooltip();
+                    }
+                )
             },
             resetProducts: function () {
                 this.referencedProducts = this.products.slice();
                 this.soldProducts = [];
             },
             removeProductFromSale: function (soldProduct){
-                console.log(soldProduct.getId());
+                // console.log(soldProduct.getId());
 
-                if (this.productsHash.get(soldProduct.getId()) !== null) {
+                if (this.productsHash.get(soldProduct.product.getId()) !== null) {
                     this.soldProducts = this.soldProducts.filter(function (value, index, arr) {
                         return value !== soldProduct;
                     })
-                    this.referencedProducts.push(soldProduct);
+                    this.referencedProducts.push(soldProduct.product);
                 }
             },
-            totalPrice: function () {
-                self = this;
-                return this.soldProducts.reduce(
-                    function(acum, soldProduct){
-                        if (self.productsHash.get(soldProduct.productId)) {
-                            return acum + (self.productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount);
-                        }
-                        return acum;
-                }, 0);
+            increaseProductAmount: function(soldProduct) {
+                soldProduct.amount ++;
             },
-            createSale: function () {
-                if (this.isProductsClean()) {
-                    JAVA_CONTROLLER.resetSoldProducts();
-                    this.soldProducts.forEach(function (soldProduct) {
-                        JAVA_CONTROLLER.addSoldProduct(
-                            soldProduct.id,
-                            soldProduct.productId,
-                            soldProduct.amount
-                        );
-                    });
-                    JAVA_CONTROLLER.createSale(this.totalPrice());
-                }else{
-                    $('#creation_error').modal('show');
+            decreaseProductAmount: function (soldProduct) {
+                if (soldProduct.amount > 1) {
+                    soldProduct.amount--;
                 }
-
-            },
-            isProductsClean: function () {
-                let self = this;
-                let result = true;
-                this.soldProducts.forEach(function(soldProduct){
-                    if (!self.productsHash.get(soldProduct.productId) || soldProduct.amount <= 0) {
-                        result = false;
-                    }
-                });
-                return result;
             }
+            // totalPrice: function () {
+            //     self = this;
+            //     return this.soldProducts.reduce(
+            //         function(acum, soldProduct){
+            //             if (self.productsHash.get(soldProduct.productId)) {
+            //                 return acum + (self.productsHash.get(soldProduct.productId).getPrice() * soldProduct.amount);
+            //             }
+            //             return acum;
+            //     }, 0);
+            // },
+            // createSale: function () {
+            //     if (this.isProductsClean()) {
+            //         JAVA_CONTROLLER.resetSoldProducts();
+            //         this.soldProducts.forEach(function (soldProduct) {
+            //             JAVA_CONTROLLER.addSoldProduct(
+            //                 soldProduct.id,
+            //                 soldProduct.productId,
+            //                 soldProduct.amount
+            //             );
+            //         });
+            //         JAVA_CONTROLLER.createSale(this.totalPrice());
+            //     }else{
+            //         $('#creation_error').modal('show');
+            //     }
+
+            // },
+            // isProductsClean: function () {
+            //     let self = this;
+            //     let result = true;
+            //     this.soldProducts.forEach(function(soldProduct){
+            //         if (!self.productsHash.get(soldProduct.productId) || soldProduct.amount <= 0) {
+            //             result = false;
+            //         }
+            //     });
+            //     return result;
+            // }
         },
 
     })

@@ -65,7 +65,7 @@ public class ProductsController extends MainController {
 
     }
 
-    public void createProduct(String categoryName, int categoryId, String name, int stock, float cost) {
+    public boolean createProduct(String categoryName, int categoryId, String name, int stock, float cost) {
         this.category = prepareCategory(categoryName, categoryId);
 
         this.product = new Product(category, name, stock, cost);
@@ -76,7 +76,7 @@ public class ProductsController extends MainController {
             System.out.println("Error ProductsController saveNewProduct " + ex.getMessage());
         }
         this.viewProducts();
-
+        return true;
     }
 
     public void updateProduct(String categoryName, int categoryId, String name, int stock, float price, int id) {
